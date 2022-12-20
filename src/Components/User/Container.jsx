@@ -34,13 +34,12 @@ export const ContainerSettings = () => {
     <div>
       <FormControl fullWidth={true} margin="normal" component="fieldset">
         <FormLabel component="legend">Background</FormLabel>
-       
-          <SketchPicker
-        color={ background }
-        onChangeComplete={(color) => {
-          setProp((props) => (props.background = color.hex));
-  }}
-      />
+        <ColorPicker
+          defaultValue={background || "#000"}
+          onChange={(color) => {
+            setProp((props) => (props.background = color));
+          }}
+        />
       </FormControl>
       <FormControl fullWidth={true} margin="normal" component="fieldset">
         <FormLabel component="legend">Padding</FormLabel>
