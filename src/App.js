@@ -1,5 +1,5 @@
 // pages/index.js
-import React, { Children } from "react";
+import React from "react";
 import { Paper, Grid, Typography } from "@mui/material";
 
 import { Toolbox } from "./Components/Toolbox";
@@ -53,21 +53,30 @@ export default function App() {
       <Typography variant="h5" align="center">
         A super simple page editor
       </Typography>
-      <Editor resolver={{ Card, Button, Text, Container }}>
+      <Editor resolver={{ Card, Button, Text, CardTop, CardBottom, Container }}>
         <Grid container spacing={3} style={{ paddingTop: "10px" }}>
           <Topbar />
           <Grid item xs>
             <Frame>
-              <Container padding={5} background="#eee">
-                <Card />
-                <Button size="small" variant="outlined">
-                  Click
-                </Button>
-                <Text size="small" text="Hi world!" />
-                <Container padding={6} background="#999">
-                  <Text size="small" text="It's me again!" />
+              <Element is={Container} padding={5} background="#eee" canvas>
+                <Container padding={5} background="#eee">
+                  <Card />
+                  <Button size="small" variant="outlined">
+                    Click
+                  </Button>
+                  <Text size="small" text="Hi world!" />
+                  <Container padding={6} background="#999">
+                    <Element
+                      is={Container}
+                      padding={2}
+                      background="#999"
+                      canvas
+                    >
+                      <Text size="small" text="It's me again!" />
+                    </Element>
+                  </Container>
                 </Container>
-              </Container>
+              </Element>
             </Frame>
           </Grid>
           <Grid item xs={3}>

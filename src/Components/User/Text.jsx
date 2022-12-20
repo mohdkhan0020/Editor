@@ -98,13 +98,15 @@ import { Slider, FormControl, FormLabel } from "@mui/material";
 // };
 
 export const Text = ({ text, fontSize, textAlign }) => {
+  // debugger;
+  // console.log("this is state =", this.state);
   const {
     connectors: { connect, drag },
     isActive,
     hasSelectedNode,
     hasDraggedNode,
     actions: { setProp },
-  } = useNode((state, node) => ({
+  } = useNode((state, node, events) => ({
     isActive: node.events.selected,
     hasSelectedNode: state.events.selected.size > 0,
     hasDraggedNode: state.events.dragged.size > 0,
@@ -182,7 +184,7 @@ Text.craft = {
     fontSize: 20,
   },
   rules: {
-    canDrag: (node) => node.data.props.text != "Drag",
+    canDrag: (node) => node.data.props.text !== "Drag",
   },
   related: {
     settings: TextSettings,
