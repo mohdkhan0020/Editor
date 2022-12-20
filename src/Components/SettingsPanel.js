@@ -14,12 +14,6 @@ import {
 import { useEditor } from "@craftjs/core";
 
 export const SettingsPanel = () => {
-  const { currentlySelectedId } = useEditor((state) => {
-    const [currentlySelectedId] = state.events.selected;
-    return {
-      currentlySelectedId,
-    };
-  });
   const { actions, selected } = useEditor((state, query) => {
     const [currentNodeId] = state.events.selected;
     let selected;
