@@ -90,7 +90,7 @@ const ButtonSettings = () => {
         >
           <FormControlLabel
             label="Default"
-            value="default"
+            value="success"
             control={<Radio size="small" color="default" />}
           />
           <FormControlLabel
