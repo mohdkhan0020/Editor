@@ -3,6 +3,7 @@ import React from "react";
 import { useNode } from "@craftjs/core";
 import { Paper, FormControl, FormLabel, Slider } from "@mui/material";
 import ColorPicker from "react-color";
+import { SketchPicker } from 'react-color';
 
 export const Container = ({ background, padding = 0, children }) => {
   const {
@@ -27,6 +28,8 @@ export const ContainerSettings = () => {
     background: node.data.props.background,
     padding: node.data.props.padding,
   }));
+  // const [backgroundcolor, setbackgroundcolor] = React.useState(background)
+ 
   return (
     <div>
       <FormControl fullWidth={true} margin="normal" component="fieldset">
