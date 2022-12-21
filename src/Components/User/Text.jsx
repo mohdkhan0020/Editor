@@ -1,18 +1,14 @@
 import React from "react";
-
-import { useEffect, useState, useCallback } from "react";
+import { SketchPicker } from "react-color";
+import { useEffect, useState} from "react";
 import ContentEditable from "react-contenteditable";
 import { useNode } from "@craftjs/core";
 import { Slider, FormControl, FormLabel } from "@mui/material";
-
-export const Text = ({ text, fontSize, textAlign }) => {
-  // debugger;
-  // console.log("this is state =", this.state);
+import props from '../Properties/properties'
+export const Text = ({ text, fontSize, textAlign,color,fontFamily,position,width,height,maxWidth,maxHeight,fontWeight,borderTopLeftRadius,borderTopRightRadius,borderBottomRightRadius,borderBottomLeftRadius,opacity,display,top,right,left,bottom,float,marginTop,marginLeft,marginRight,marginBottom,paddingTop,paddingLeft,paddingRight,paddingBottom,textDecoration,textShadow }) => {
   const {
     connectors: { connect, drag },
-    // isActive,
     hasSelectedNode,
-    // hasDraggedNode,
     actions: { setProp },
   } = useNode((state, node) => ({
     isActive: state.events.selected,
@@ -24,11 +20,11 @@ export const Text = ({ text, fontSize, textAlign }) => {
 
   useEffect(() => {
     !hasSelectedNode && setEditable(false);
+    console.log(JSON.parse(Object.keys(props)));
   }, [hasSelectedNode]);
 
   return (
     <div ref={(ref) => connect(drag(ref))} onClick={(e) => setEditable(true)}>
-      {/* <p style={{ fontSize }}>{text}</p> */}
       <ContentEditable
         disabled={!editable}
         html={text}
@@ -39,7 +35,7 @@ export const Text = ({ text, fontSize, textAlign }) => {
           )
         }
         tagName="p"
-        style={{ fontSize: `${fontSize}px`, textAlign }}
+        style={{ fontSize: `${fontSize}px`, textAlign ,color,letterSpacing:`1px`,borderTopLeftRadius:'5px'}}
       />
       {hasSelectedNode && (
         <FormControl className="text-additional-settings" size="small">
@@ -63,7 +59,7 @@ export const Text = ({ text, fontSize, textAlign }) => {
 const TextSettings = () => {
   const {
     actions: { setProp },
-    fontSize,
+    fontSize,color
   } = useNode((node) => ({
     fontSize: node.data.props.fontSize,
   }));
@@ -81,6 +77,12 @@ const TextSettings = () => {
             setProp((props) => (props.fontSize = value));
           }}
         />
+        <SketchPicker
+        color={color || "#000"}
+        onChangeComplete={ (color) => {
+          setProp((props) => (props.color = color.hex));
+        } }
+      />
       </FormControl>
     </>
   );

@@ -4,7 +4,7 @@ import { useNode } from "@craftjs/core";
 import { Paper, FormControl, FormLabel, Slider } from "@mui/material";
 import { SketchPicker } from 'react-color';
 
-export const Container = ({ background, padding = 0, children }) => {
+export const Container = ({ text,background,padding,children, fontSize, textAlign,color,fontFamily,position,width,height,maxWidth,maxHeight,fontWeight,borderTopLeftRadius,borderTopRightRadius,borderBottomRightRadius,borderBottomLeftRadius,opacity,display,top,right,left,bottom,float,marginTop,marginLeft,marginRight,marginBottom,paddingTop,paddingLeft,paddingRight,paddingBottom,textDecoration,textShadow }) => {
   const {
     connectors: { connect, drag },
   } = useNode();

@@ -10,7 +10,7 @@ import {
   FormControlLabel,
 } from "@mui/material";
 
-export const Button = ({ size, variant, color, children, text }) => {
+export const Button = ({ text,background,variant,size,padding,children, fontSize, textAlign,color,fontFamily,position,width,height,maxWidth,maxHeight,fontWeight,borderTopLeftRadius,borderTopRightRadius,borderBottomRightRadius,borderBottomLeftRadius,opacity,display,top,right,left,bottom,float,marginTop,marginLeft,marginRight,marginBottom,paddingTop,paddingLeft,paddingRight,paddingBottom,textDecoration,textShadow }) => {
   const {
     connectors: { connect, drag },
   } = useNode();
@@ -21,7 +21,7 @@ export const Button = ({ size, variant, color, children, text }) => {
       variant={variant}
       color={color}
     >
-      {children}
+      {text}
     </MaterialButton>
   );
 };
@@ -33,6 +33,7 @@ const ButtonSettings = () => {
   } = useNode((node) => ({
     props: node.data.props,
   }));
+  const [username, setUsername] = React.useState('');
 
   return (
     <div>
@@ -83,10 +84,17 @@ const ButtonSettings = () => {
         </RadioGroup>
       </FormControl>
       <FormControl component="fieldset">
+        <FormLabel>Text</FormLabel>
+        <FormControl>
+        <input type="text" value={username} placeholder="jdoe123" onChange={e => {
+          setProp((props) => (props.text = e.target.value))
+          setUsername(e.target.value)}} />
+        </FormControl>
+        <br />
         <FormLabel component="legend">Color</FormLabel>
         <RadioGroup
           defaultValue={props.color}
-          onChange={(e) => setProp((props) => (props.color = e.target.value))}
+          onChange={(e) => setProp((props) => (props.color = e.target.value.toUpperCase))}
         >
           <FormControlLabel
             label="Default"
