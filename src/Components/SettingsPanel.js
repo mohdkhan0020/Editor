@@ -34,7 +34,7 @@ export const SettingsPanel = () => {
     };
   });
   return selected ? (
-    <Box bgcolor="rgba(0, 0, 0, 0.06)" mt={2} px={2} py={2}>
+    <Box bgcolor="rgba(0, 0, 0, 0.06)" mt={2} px={2} py={2} width={`330px`}>
       <Grid container direction="column" spacing={0}>
         <Grid item>
           <Box pb={2}>
@@ -49,16 +49,7 @@ export const SettingsPanel = () => {
           </Box>
         </Grid>
         {selected.settings && React.createElement(selected.settings)}
-        <FormControl size="small" component="fieldset">
-          <FormLabel component="legend">Prop</FormLabel>
-          <Slider
-            defaultValue={0}
-            step={1}
-            min={7}
-            max={50}
-            valueLabelDisplay="auto"
-          />
-        </FormControl>
+       
         {selected.isDeletable ? (
           <MaterialButton
             variant="contained"
