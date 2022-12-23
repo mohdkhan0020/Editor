@@ -1242,6 +1242,11 @@ const TextSettings = () => {
             max={1}
             step={0.1}
             valueLabelDisplay="auto"
+            onChange={(e)=>{
+              return setProp((props) => {
+                return (props.opacity = e.target.value);
+              });
+            }}
           />
        </FormControl>
        <h2>Border Radius</h2>
