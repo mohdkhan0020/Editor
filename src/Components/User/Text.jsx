@@ -3,16 +3,7 @@ import { SketchPicker } from "react-color";
 import { useEffect, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { useNode } from "@craftjs/core";
-import {
-  Slider,
-  FormControl,
-  FormLabel,
-  InputLabel,
-  Select,
-  MenuItem,
-  Input,
-  Radio,
-} from "@mui/material";
+import { Slider, FormControl } from "@mui/material";
 
 export const Text = ({
   text,
@@ -50,7 +41,15 @@ export const Text = ({
   textDecoration,
   textShadow,
   letterSpacing,
-  lineHeight
+  lineHeight,
+  border,
+  flexDirection,
+  justifyContent,
+  alignItems,
+  alignSelf,
+  flexGrow,
+  flexShrink,
+  flexBasis
 }) => {
   const {
     connectors: { connect, drag },
@@ -85,7 +84,6 @@ export const Text = ({
           fontSize,
           textAlign,
           color,
-          borderTopLeftRadius: "5px",
           float,
           fontFamily,
           top,
@@ -108,6 +106,21 @@ export const Text = ({
           fontWeight,
           letterSpacing,
           lineHeight,
+          opacity,
+          borderTopLeftRadius,
+          borderTopRightRadius,
+          borderBottomRightRadius,
+          borderBottomLeftRadius,
+          border,
+          flexDirection,
+          justifyContent,
+          alignItems,
+          alignSelf,
+          flexGrow,
+          flexShrink,
+          flexBasis
+          
+          
         }}
       />
       {/* {hasSelectedNode && (
@@ -130,7 +143,7 @@ export const Text = ({
 };
 
 const TextSettings = () => {
-  const {
+  const {  
     actions: { setProp },
     fontSize,
     color,
@@ -158,6 +171,20 @@ const TextSettings = () => {
     fontWeight,
     letterSpacing,
     lineHeight,
+    opacity,
+    borderTopRightRadius,
+    borderTopLeftRadius,
+    borderBottomRightRadius,
+    borderBottomLeftRadius,
+    border,
+    flexDirection,
+    justifyContent,
+    alignItems,
+    alignSelf,
+    flexGrow,
+    flexShrink,
+    flexBasis
+
   } = useNode((node) => ({
     fontSize: node.data.props.fontSize,
   }));
@@ -218,6 +245,27 @@ const TextSettings = () => {
   const [lineheightcssvalue, setlineheightcssvalue] = useState(0);
   const [lineheightcssunits, setlineheightcssunits] = useState(`px`);
 
+  const [borderwidthcssvalue, setborderwidthcssvalue] = useState(0);
+  const [borderwidthcssunits, setborderwidthcssunits] = useState(`px`);
+
+  const [borderradiusbottomleftcssvalue, setborderradiusbottomleftcssvalue] = useState(0);
+  const [borderradiusbottomleftcssunits, setborderradiusbottomleftcssunits] = useState(`px`);
+
+  const [borderradiusbottomrightcssvalue, setborderradiusbottomrightcssvalue] = useState(0);
+  const [borderradiusbottomrightcssunits, setborderradiusbottomrightcssunits] = useState(`px`);
+
+  const [borderradiustopleftcssvalue, setborderradiustopleftcssvalue] = useState(0);
+  const [borderradiustopleftcssunits, setborderradiustopleftcssunits] = useState(`px`);
+
+  const [borderradiustoprightcssvalue, setborderradiustoprightcssvalue] = useState(0);
+  const [borderradiustoprightcssunits, setborderradiustoprightcssunits] = useState(`px`);
+
+  const [flexbasiscssvalue, setflexbasiscssvalue] = useState(0);
+  const [flexbasiscssunits, setflexbasiscssunits] = useState(`px`);
+
+  const [borderstyle, setborderstyle] = useState(``);
+
+
   return (
     <>
       <FormControl size="small" component="fieldset">
@@ -235,7 +283,6 @@ const TextSettings = () => {
           <select
             name="float"
             id="float"
-            value={float}
             onChange={(event) => {
               console.log(event.target.value);
               setProp((props) => (props.float = event.target.value));
@@ -253,7 +300,6 @@ const TextSettings = () => {
             <select
               name="textalign"
               id="textalign"
-              value={display}
               onChange={(event) => {
                 console.log(event.target.value);
                 setProp((props) => (props.display = event.target.value));
@@ -273,7 +319,6 @@ const TextSettings = () => {
             <select
               name="Position"
               id="Position"
-              value={position}
               onChange={(event) => {
                 console.log(event.target.value);
                 setProp((props) => (props.position = event.target.value));
@@ -313,7 +358,6 @@ const TextSettings = () => {
               <select
                 name="Top"
                 id="Top"
-                value={top}
                 onChange={(event) => {
                   settopcssunits(`${event.target.value}`);
                   setProp((props) => {
@@ -352,7 +396,6 @@ const TextSettings = () => {
               <select
                 name="Top"
                 id="Top"
-                value={bottom}
                 onChange={(event) => {
                   setbottomcssunits(`${event.target.value}`);
                   setProp((props) => {
@@ -396,7 +439,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={left}
               onChange={(event) => {
                 setleftcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -435,7 +477,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={right}
               onChange={(event) => {
                 setrightcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -481,7 +522,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={width}
               onChange={(event) => {
                 setwidthcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -520,7 +560,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={height}
               onChange={(event) => {
                 setheightcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -567,7 +606,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={maxwidthcssvalue}
               onChange={(event) => {
                 setmaxwidthcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -606,7 +644,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={minheightcssunits}
               onChange={(event) => {
                 setminheightcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -652,7 +689,6 @@ const TextSettings = () => {
               <select
                 name="Top"
                 id="Top"
-                value={margintopcssunits}
                 onChange={(event) => {
                   setmargintopcssunits(`${event.target.value}`);
                   setProp((props) => {
@@ -692,7 +728,6 @@ const TextSettings = () => {
               <select
                 name="Top"
                 id="Top"
-                value={marginbottomcssunits}
                 onChange={(event) => {
                   setmarginbottomcssunits(`${event.target.value}`);
                   setProp((props) => {
@@ -736,7 +771,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={marginleftcssunits}
               onChange={(event) => {
                 setmarginleftcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -775,7 +809,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={marginrightcssunits}
               onChange={(event) => {
                 setmarginrightcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -822,7 +855,6 @@ const TextSettings = () => {
               <select
                 name="Top"
                 id="Top"
-                value={paddingtopcssunits}
                 onChange={(event) => {
                   setpaddingtopcssunits(`${event.target.value}`);
                   setProp((props) => {
@@ -862,7 +894,6 @@ const TextSettings = () => {
               <select
                 name="Top"
                 id="Top"
-                value={paddingbottomcssunits}
                 onChange={(event) => {
                   setpaddingbottomcssunits(`${event.target.value}`);
                   setProp((props) => {
@@ -906,7 +937,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={paddingleftcssunits}
               onChange={(event) => {
                 setpaddingleftcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -945,7 +975,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={paddingrightcssunits}
               onChange={(event) => {
                 setpaddingrightcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -974,7 +1003,6 @@ const TextSettings = () => {
             <select
               name="textalign"
               id="textalign"
-              value={fontFamily}
               onChange={(event) => {
                 console.log(event.target.value);
                 setProp((props) => (props.fontFamily = event.target.value));
@@ -1032,7 +1060,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={fontsizecssunits}
               onChange={(event) => {
                 setfontsizecssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -1063,7 +1090,6 @@ const TextSettings = () => {
             <select
               name="textalign"
               id="textalign"
-              value={fontFamily}
               onChange={(event) => {
                 console.log(event.target.value);
                 setProp((props) => (props.fontWeight = event.target.value));
@@ -1115,7 +1141,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={letterSpacingcssunits}
               onChange={(event) => {
                 setletterSpacingcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -1144,7 +1169,6 @@ const TextSettings = () => {
             <select
               name="textalign"
               id="textalign"
-              value={textAlign}
               onChange={(event) => {
                 console.log(event.target.value);
                 setProp((props) => (props.textAlign = event.target.value));
@@ -1188,7 +1212,6 @@ const TextSettings = () => {
             <select
               name="Top"
               id="Top"
-              value={letterSpacingcssunits}
               onChange={(event) => {
                 setlineheightcssunits(`${event.target.value}`);
                 setProp((props) => {
@@ -1210,6 +1233,453 @@ const TextSettings = () => {
         </div>
         </FormControl>
        {/*  */}
+       <h1>Decorations</h1>
+       <FormControl>
+        <label>Opacity</label>
+        <Slider
+            defaultValue={opacity||0}
+            min={0}
+            max={1}
+            step={0.1}
+            valueLabelDisplay="auto"
+          />
+       </FormControl>
+       <h2>Border Radius</h2>
+       <FormControl>
+       <div style={{ display: "flex" }}>
+          <FormControl>
+            <label htmlFor="Top"> Top Left</label>
+            <div style={{ display: "flex" }}>
+              <input
+                type="number"
+                value={borderradiustopleftcssvalue}
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="50"
+                onChange={(e) => {
+                  setborderradiustopleftcssvalue(e.target.value);
+                  setProp((props) => {
+                    console.log(`${borderradiustopleftcssvalue}${borderradiustopleftcssunits}`);
+                    return (props.borderTopLeftRadius = `${e.target.value}${borderradiustopleftcssunits}`);
+                  });
+                }}
+              ></input>
+
+              <select
+                name="Top"
+                id="Top"
+                onChange={(event) => {
+                  setborderradiustopleftcssunits(`${event.target.value}`);
+                  setProp((props) => {
+                    return (props.borderTopLeftRadius = `${borderradiustopleftcssvalue}${event.target.value}`);
+                  });
+                }}
+              >
+                <option value="px">px</option>
+                <option value="%">%</option>
+                <option value="vh">vh</option>
+                <option value="em">em</option>
+                <option value="rem">rem</option>
+                <option value="vw">vw</option>
+              </select>
+            </div>
+          </FormControl>
+
+          <FormControl>
+            <label htmlFor="Top">Top Right </label>
+            <div style={{ display: "flex" }}>
+              <input
+                type="number"
+                value={borderradiustoprightcssvalue}
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="50"
+                onChange={(e) => {
+                  setborderradiustoprightcssvalue(e.target.value);
+                  setProp((props) => {
+                    console.log(`${borderradiustoprightcssvalue}${borderradiustoprightcssunits}`);
+                    return (props.borderTopRightRadius = `${e.target.value}${borderradiustoprightcssunits}`);
+                  });
+                }}
+              ></input>
+
+              <select
+                name="Top"
+                id="Top"
+                onChange={(event) => {
+                  setborderradiustoprightcssunits(`${event.target.value}`);
+                  setProp((props) => {
+                    return (props.borderTopRightRadius = `${borderradiustoprightcssvalue}${event.target.value}`);
+                  });
+                }}
+              >
+                <option value="px">px</option>
+                <option value="%">%</option>
+                <option value="vh">vh</option>
+                <option value="em">em</option>
+                <option value="rem">rem</option>
+                <option value="vw">vw</option>
+              </select>
+            </div>
+
+
+          </FormControl>
+        </div>
+
+       </FormControl>
+       <FormControl>
+       <div style={{ display: "flex" }}>
+          <FormControl>
+            <label htmlFor="Top"> Bottom Left</label>
+            <div style={{ display: "flex" }}>
+              <input
+                type="number"
+                value={borderradiusbottomleftcssvalue}
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="50"
+                onChange={(e) => {
+                  setborderradiusbottomleftcssvalue(e.target.value);
+                  setProp((props) => {
+                    console.log(`${borderradiusbottomleftcssvalue}${borderradiusbottomleftcssunits}`);
+                    return (props.borderBottomLeftRadius = `${e.target.value}${borderradiusbottomleftcssunits}`);
+                  });
+                }}
+              ></input>
+
+              <select
+                name="Top"
+                id="Top"
+                onChange={(event) => {
+                  setborderradiusbottomleftcssunits(`${event.target.value}`);
+                  setProp((props) => {
+                    return (props.borderBottomRightRadius = `${borderradiusbottomleftcssvalue}${event.target.value}`);
+                  });
+                }}
+              >
+                <option value="px">px</option>
+                <option value="%">%</option>
+                <option value="vh">vh</option>
+                <option value="em">em</option>
+                <option value="rem">rem</option>
+                <option value="vw">vw</option>
+              </select>
+            </div>
+          </FormControl>
+
+          <FormControl>
+            <label htmlFor="Top">Bottom Right </label>
+            <div style={{ display: "flex" }}>
+              <input
+                type="number"
+                value={borderradiusbottomrightcssvalue}
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="50"
+                onChange={(e) => {
+                  setborderradiusbottomrightcssvalue(e.target.value);
+                  setProp((props) => {
+                    console.log(`${borderradiusbottomrightcssvalue}${borderradiusbottomrightcssunits}`);
+                    return (props.borderBottomRightRadius = `${e.target.value}${borderradiusbottomrightcssunits}`);
+                  });
+                }}
+              ></input>
+
+              <select
+                name="Top"
+                id="Top"
+                onChange={(event) => {
+                  setborderradiusbottomrightcssunits(`${event.target.value}`);
+                  setProp((props) => {
+                    return (props.borderBottomRightRadius = `${borderradiusbottomrightcssvalue}${event.target.value}`);
+                  });
+                }}
+              >
+                <option value="px">px</option>
+                <option value="%">%</option>
+                <option value="vh">vh</option>
+                <option value="em">em</option>
+                <option value="rem">rem</option>
+                <option value="vw">vw</option>
+              </select>
+            </div>
+
+
+          </FormControl>
+        </div>
+       </FormControl>
+       <FormControl>
+       <div style={{ display: "flex" }}>
+          <FormControl>
+          <label htmlFor="Style">Style</label>
+            <div style={{ display: "flex" }}>
+            <select
+              name="Style"
+              id="Style"
+              onChange={(event) => {
+                console.log(event.target.value);
+                setborderstyle(event.target.value)
+                setProp((props) => (props.border = `${event.target.value} ${borderwidthcssvalue}${borderwidthcssunits}`));
+              }}
+            >
+              <option value="none">none</option>
+              <option value="solid">
+                solid
+              </option>
+              <option value="dotted">
+                dotted
+              </option>
+              <option value="dashed">
+                dashed
+              </option>
+              <option value="double">
+                double
+              </option>
+              <option value="groove">groove</option>
+              <option value="ridge">ridge</option>
+              <option value="inset">inset</option>
+              <option value="outset">
+                outset
+              </option>
+            </select>
+            </div>
+          </FormControl>
+          <FormControl>
+          <label htmlFor="Top">Border width</label>
+            <div style={{ display: "flex" }}>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="0"
+              max="50"
+              onChange={(e) => {
+                setborderwidthcssvalue(e.target.value);
+                setProp((props) => {
+                  console.log(`${borderwidthcssvalue}${borderwidthcssunits}`);
+                  return (props.border = `${borderstyle} ${e.target.value}${borderwidthcssunits}`);
+                });
+              }}
+            ></input>
+
+            <select
+              name="Top"
+              id="Top"
+              onChange={(event) => {
+                setborderwidthcssunits(`${event.target.value}`);
+                console.log(`${borderstyle} ${borderwidthcssvalue}${event.target.value}`);
+                setProp((props) => {
+                  return (props.border = `${borderstyle} ${borderwidthcssvalue}${event.target.value}`);
+                });
+              }}
+            >
+              <option value="px">px</option>
+              <option value="vh">vh</option>
+              <option value="em">em</option>
+              <option value="rem">rem</option>
+              <option value="vw">vw</option>
+            </select>
+            </div>
+
+            
+          </FormControl>
+        </div>
+       </FormControl>
+       <FormControl>
+        <h1>Flex</h1>
+        <div style={{ display: "flex" }}>
+          <FormControl>
+          <label htmlFor="textalign">Flex</label>
+            <div style={{ display: "flex" }}>
+            <select
+              name="textalign"
+              id="textalign"
+              onChange={(event) => {
+                setProp((props) => (props.display = event.target.value));
+              }}
+            >
+              <option value="block">Disable</option>
+              <option value="flex">Enable</option>
+            </select>
+            </div>
+          </FormControl>
+          <FormControl>
+          <label htmlFor="Position">Flex Direction</label>
+            <div style={{ display: "flex" }}>
+            <select
+              name="Position"
+              id="Position"
+              onChange={(event) => {
+                console.log(event.target.value);
+                setProp((props) => (props.flexDirection = event.target.value));
+              }}
+            >
+              <option value="row">row</option>
+              <option value="row-reverse">row-reverse</option>
+              <option value="column">column</option>
+              <option value="column-reverse">column-reverse</option>
+            </select>
+            </div>
+
+
+          </FormControl>
+        </div>
+        <div style={{ display: "flex" }}>
+          <FormControl>
+          <label htmlFor="textalign">Justify Content</label>
+            <div style={{ display: "flex" }}>
+            <select
+              name="textalign"
+              id="textalign"
+              onChange={(event) => {
+                setProp((props) => (props.justifyContent = event.target.value));
+              }}
+            >
+              <option value="flex-start">flex-start</option>
+              <option value="flex-end">flex-end</option>
+              <option value="space-between">space-between</option>
+              <option value="space-around">space-around</option>
+              <option value="center">center</option>
+            </select>
+            </div>
+          </FormControl>
+          <FormControl>
+          <label htmlFor="Position">Align Items</label>
+            <div style={{ display: "flex" }}>
+            <select
+              name="Position"
+              id="Position"
+              onChange={(event) => {
+                console.log(event.target.value);
+                setProp((props) => (props.alignItems = event.target.value));
+              }}
+            >
+              <option value="flex-start">flex-start</option>
+              <option value="flex-end">flex-end</option>
+              <option value="stretch">stretch</option>
+              <option value="center">center</option>
+            </select>
+            </div>
+
+
+          </FormControl>
+        </div>
+       </FormControl>
+       <FormControl>
+       <div style={{ display: "flex" }}>
+          <FormControl>
+            <label htmlFor="Top"> Flex Grow</label>
+            <div style={{ display: "flex" }}>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                placeholder="0"
+                min="0"
+                max="50"
+                onChange={(e) => {
+                  
+                  setProp((props) => {
+                    return (props.flexGrow = e.target.value);
+                  });
+                }}
+              ></input>
+            </div>
+          </FormControl>
+
+          <FormControl>
+            <label htmlFor="Top">Flex Shrink </label>
+            <div style={{ display: "flex" }}>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                placeholder="0"
+                min="0"
+                max="50"
+                onChange={(e) => {
+                  
+                  setProp((props) => {
+                    return (props.flexShrink = e.target.value);
+                  });
+                }}
+              ></input>
+
+              
+            </div>
+
+
+          </FormControl>
+        </div>
+       </FormControl>
+
+       <FormControl>
+       <div style={{ display: "flex" }}>
+          <FormControl>
+          <label htmlFor="textalign">Align Self</label>
+            <div style={{ display: "flex" }}>
+            <select
+              name="Position"
+              id="Position"
+              onChange={(event) => {
+                console.log(event.target.value);
+                setProp((props) => (props.alignSelf = event.target.value));
+              }}
+            >
+              <option value="auto">auto</option>
+              <option value="flex-start">flex-start</option>
+              <option value="flex-end">flex-end</option>
+              <option value="stretch">stretch</option>
+              <option value="center">center</option>
+            </select>
+            </div>
+          </FormControl>
+          <FormControl>
+          <label htmlFor="Top">Flex Basis</label>
+            <div style={{ display: "flex" }}>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              value={flexbasiscssvalue}
+              min="0"
+              max="50"
+              onChange={(e) => {
+                setflexbasiscssvalue(e.target.value);
+                setProp((props) => {
+                  console.log(`${flexbasiscssvalue}${flexbasiscssunits}`);
+                  return (props.flexBasis = `${e.target.value}${flexbasiscssunits}`);
+                });
+              }}
+            ></input>
+
+            <select
+              name="Top"
+              id="Top"
+              onChange={(event) => {
+                setflexbasiscssunits(`${event.target.value}`);
+                setProp((props) => {
+                  return (props.flexBasis = `${flexbasiscssvalue}${event.target.value}`);
+                });
+              }}
+            >
+              <option value="px">px</option>
+              <option value="%">%</option>
+              <option value="vh">vh</option>
+              <option value="em">em</option>
+              <option value="rem">rem</option>
+              <option value="vw">vw</option>
+            </select>
+            </div>
+
+            
+          </FormControl>
+        </div>
+       </FormControl>
         
 
 
