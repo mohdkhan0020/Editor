@@ -1,51 +1,116 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 import { SketchPicker } from "react-color";
+import options from "../User/Data";
+import { memo } from "react";
 
-import {FormControl } from "@mui/material";
+import { FormControl } from "@mui/material";
 
-const General = ({setProp,color}) => {
-    const [topcssvalue, settopcssvalue] = useState(0);
-    const [topcssunits, settopcssunits] = useState(`px`);
-  
-    const [bottomcssvalue, setbottomcssvalue] = useState(0);
-    const [bottomcssunits, setbottomcssunits] = useState(`px`);
-  
-    const [leftcssvalue, setleftcssvalue] = useState(0);
-    const [leftcssunits, setleftcssunits] = useState(`px`);
-  
-    const [rightcssvalue, setrightcssvalue] = useState(0);
-    const [rightcssunits, setrightcssunits] = useState(`px`);
-  
+const General = ({ setProp, color }) => {
+  const [topcssvalue, settopcssvalue] = useState(0);
+  const [topcssunits, settopcssunits] = useState(`px`);
+
+  const [bottomcssvalue, setbottomcssvalue] = useState(0);
+  const [bottomcssunits, setbottomcssunits] = useState(`px`);
+
+  const [leftcssvalue, setleftcssvalue] = useState(0);
+  const [leftcssunits, setleftcssunits] = useState(`px`);
+
+  const [rightcssvalue, setrightcssvalue] = useState(0);
+  const [rightcssunits, setrightcssunits] = useState(`px`);
+
+  // const dynamictopvalue =
+
+  const search = (e) => {
+    if (e.key === "Enter") {
+      // debugger;
+      let str = document.getElementById(e.target.id).value;
+      var cssvalue = str.replace(/\D/g, "");
+      var cssunits = str.replace(/[^a-z]/gi, "");
+      console.log("units " + cssunits);
+      if (isNaN(cssunits)) {
+        let str = "";
+        str = str + cssunits;
+        if (options.top.includes(str)) {
+          switch (e.target.id) {
+            case "topvalue":
+              settopcssvalue(cssvalue);
+              settopcssunits(str);
+              // debugger;
+
+              document.getElementById("topvalue").value = cssvalue;
+              setProp((props) => {
+                return (props.top = `${cssvalue}${cssunits}`);
+              });
+              break;
+            case "bottomvalue":
+              setbottomcssvalue(cssvalue);
+              setbottomcssunits(str);
+              document.getElementById("bottomvalue").value = cssvalue;
+              setProp((props) => {
+                return (props.bottom = `${cssvalue}${cssunits}`);
+              });
+              break;
+            case "leftvalue":
+              setleftcssvalue(cssvalue);
+              setleftcssunits(str);
+              document.getElementById("leftvalue").value = cssvalue;
+              setProp((props) => {
+                return (props.left = `${cssvalue}${cssunits}`);
+              });
+              break;
+
+            case "rightvalue":
+              setrightcssvalue(cssvalue);
+              setrightcssunits(str);
+              document.getElementById("rightvalue").value = cssvalue;
+              setProp((props) => {
+                return (props.right = `${cssvalue}${cssunits}`);
+              });
+              break;
+
+            default:
+              return 1;
+          }
+        }
+      }
+    }
+  };
+
   return (
     <div>
-         <h1>General</h1>
-        
-        <SketchPicker
-          color={color || "#000"}
-          onChangeComplete={(color) => {
-            setProp((props) => (props.color = color.hex));
-          }}
-        />
+      <h1>General</h1>
 
+      <SketchPicker
+        color={color || "#000"}
+        onChangeComplete={(color) => {
+          setProp((props) => (props.color = color.hex));
+        }}
+      />
+
+      <FormControl>
+        <label htmlFor="textalign">Float</label>
+        <select
+          name="float"
+          id="float"
+          onChange={(event) => {
+            console.log(event.target.value);
+            setProp((props) => (props.float = event.target.value));
+          }}
+        >
+          {/* <option>-</option> */}
+          {options.float.map((item, id) => {
+            return (
+              <option key={id} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+      </FormControl>
+      <div style={{ display: "flex" }}>
         <FormControl>
-          <label htmlFor="textalign">Float</label>
-          <select
-            name="float"
-            id="float"
-            onChange={(event) => {
-              console.log(event.target.value);
-              setProp((props) => (props.float = event.target.value));
-            }}
-          >
-            <option value="left">left</option>
-            <option value="right">right</option>
-            <option value="none">none</option>
-          </select>
-        </FormControl>
-        <div style={{ display: "flex" }}>
-          <FormControl>
           <label htmlFor="textalign">Display</label>
-            <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <select
               name="textalign"
               id="textalign"
@@ -54,17 +119,19 @@ const General = ({setProp,color}) => {
                 setProp((props) => (props.display = event.target.value));
               }}
             >
-              <option value="inline">inline</option>
-              <option value="block">block</option>
-              <option value="inline-block">inline block</option>
-              <option value="flex">flex</option>
-              <option value="none">none</option>
+              {options.display.map((item, id) => {
+                return (
+                  <option key={id} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
             </select>
-            </div>
-          </FormControl>
-          <FormControl>
+          </div>
+        </FormControl>
+        <FormControl>
           <label htmlFor="Position">Position</label>
-            <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <select
               name="Position"
               id="Position"
@@ -73,197 +140,161 @@ const General = ({setProp,color}) => {
                 setProp((props) => (props.position = event.target.value));
               }}
             >
-              <option value="static">static</option>
-              <option value="relative">relative</option>
-              <option value="absolute">absolute</option>
-              <option value="fixed">fixed</option>
+              {options.position.map((item, id) => {
+                return (
+                  <option key={id} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
             </select>
-            </div>
+          </div>
+        </FormControl>
+      </div>
 
-
-          </FormControl>
-        </div>
-
-        <div style={{ display: "flex" }}>
-          <FormControl>
-            <label htmlFor="Top">Top</label>
-            <div style={{ display: "flex" }}>
-              <input
-                type="text"
-                id="topvalue"
-                name="quantity"
-                onKeyDown={(e)=>{
-                  if(e.key==="Enter"){
-                    let str = document.getElementById("topvalue").value
-                  var cssvalue = str.replace(/\D/g, "");
-                  var cssunits = str.replace(/[^a-z]/gi, '');
-                  console.log("units "+cssunits);
-                  console.log("value "+cssvalue);
-                  if (isNaN(cssunits)) {
-                    settopcssvalue(cssvalue)
-                    let str=""
-                    str = str + cssunits;
-                    let units = ["px", "%", "vh", "em", "rem", "vw"];
-                    if (units.includes(str)){
-                      settopcssunits(str)
-                      document.getElementById("topvalue").value=cssvalue;
-                    }
-                  }
-                  setProp((props) => {
-                    // console.log(`${topcssvalue}${topcssunits}`);
-                    return (props.top = `${cssvalue}${cssunits}`);
-                  });
-
-                  }
-                }}
-              ></input>
-
-              <select
-                name="Top"
-                id="Top"
-                value={topcssunits}
-                onChange={(event) => {
-                  settopcssunits(`${event.target.value}`);
-                  document.getElementById("topvalue").value=`${topcssvalue}`;
-                  setProp((props) => {
-                    return (props.top = `${topcssvalue}${event.target.value}`);
-                  });
-                }}
-              >
-                <option value="px">px</option>
-                <option value="%">%</option>
-                <option value="vh">vh</option>
-                <option value="em">em</option>
-                <option value="rem">rem</option>
-                <option value="vw">vw</option>
-              </select>
-            </div>
-          </FormControl>
-          <FormControl>
-            <label htmlFor="Top">Bottom</label>
-            <div style={{ display: "flex" }}>
-              <input
-                type="number"
-                value={bottomcssvalue}
-                id="quantity"
-                name="quantity"
-                min="0"
-                max="50"
-                onChange={(e) => {
-                  setbottomcssvalue(e.target.value);
-                  setProp((props) => {
-                    console.log(`${bottomcssvalue}${bottomcssunits}`);
-                    return (props.bottom = `${e.target.value}${bottomcssunits}`);
-                  });
-                }}
-              ></input>
-
-              <select
-                name="Top"
-                id="Bottom"
-                onChange={(event) => {
-                  setbottomcssunits(`${event.target.value}`);
-                  setProp((props) => {
-                    return (props.bottom = `${bottomcssvalue}${event.target.value}`);
-                  });
-                }}
-              >
-                <option value="px">px</option>
-                <option value="%">%</option>
-                <option value="vh">vh</option>
-                <option value="em">em</option>
-                <option value="rem">rem</option>
-                <option value="vw">vw</option>
-              </select>
-            </div>
-
-
-          </FormControl>
-        </div>
-
-        <div style={{ display: "flex" }}>
-          <FormControl>
-          <label htmlFor="Top">Left</label>
-            <div style={{ display: "flex" }}>
+      <div>
+        <FormControl>
+          <label htmlFor="Top">Top</label>
+          <div>
             <input
-              type="number"
-              value={leftcssvalue}
-              id="quantity"
+              type="text"
+              id="topvalue"
               name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setleftcssvalue(e.target.value);
+              onKeyDown={search}
+            ></input>
+
+            <select
+              name="Top"
+              id="Top"
+              value={topcssunits}
+              onChange={(event) => {
+                // debugger;
+                settopcssunits(`${event.target.value}`);
+                document.getElementById("topvalue").value = `${topcssvalue}`;
                 setProp((props) => {
-                  console.log(`${leftcssvalue}${leftcssunits}`);
-                  return (props.left = `${e.target.value}${leftcssunits}`);
+                  return (props.top = `${topcssvalue}${event.target.value}`);
                 });
               }}
+            >
+              {options.top.map((item, id) => {
+                return (
+                  <option key={id} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </FormControl>
+        <FormControl>
+          <label htmlFor="Top">Bottom</label>
+          <div style={{ display: "flex" }}>
+            <input
+              type="text"
+              id="bottomvalue"
+              name="bottomvalue"
+              onKeyDown={search}
+            ></input>
+
+            <select
+              name="Bottom"
+              id="Bottom"
+              value={bottomcssunits}
+              onChange={(event) => {
+                // debugger;
+                setbottomcssunits(`${event.target.value}`);
+                document.getElementById(
+                  "bottomvalue"
+                ).value = `${bottomcssvalue}`;
+                setProp((props) => {
+                  return (props.bottom = `${bottomcssvalue}${event.target.value}`);
+                });
+              }}
+            >
+              {options.top.map((item, id) => {
+                return (
+                  <option key={id} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </FormControl>
+      </div>
+
+      <div>
+        <FormControl>
+          <label htmlFor="Top">Left</label>
+          <div>
+            <input
+              type="text"
+              id="leftvalue"
+              name="leftvalue"
+              onKeyDown={search}
             ></input>
 
             <select
               name="Left"
               id="Left"
+              value={leftcssunits}
               onChange={(event) => {
+                // debugger;
                 setleftcssunits(`${event.target.value}`);
+                document.getElementById("leftvalue").value = `${leftcssvalue}`;
                 setProp((props) => {
                   return (props.left = `${leftcssvalue}${event.target.value}`);
                 });
               }}
             >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
+              {options.top.map((item, id) => {
+                return (
+                  <option key={id} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
             </select>
-            </div>
-          </FormControl>
-          <FormControl>
+          </div>
+        </FormControl>
+        <FormControl>
           <label htmlFor="Top">right</label>
-            <div style={{ display: "flex" }}>
+          <div style={{}}>
             <input
-              type="number"
-              value={rightcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setrightcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${rightcssvalue}${rightcssunits}`);
-                  return (props.right = `${e.target.value}${rightcssunits}`);
-                });
-              }}
+              type="text"
+              id="rightvalue"
+              name="rightvalue"
+              onKeyDown={search}
             ></input>
 
             <select
               name="Right"
               id="Right"
+              value={rightcssunits}
               onChange={(event) => {
+                // debugger;
                 setrightcssunits(`${event.target.value}`);
+                document.getElementById(
+                  "rightvalue"
+                ).value = `${rightcssvalue}`;
                 setProp((props) => {
                   return (props.right = `${rightcssvalue}${event.target.value}`);
                 });
               }}
             >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
+              {options.top.map((item, id) => {
+                return (
+                  <option key={id} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
             </select>
-            </div>
-
-            
-          </FormControl>
-        </div>
-      
+          </div>
+        </FormControl>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default General
+export default memo(General);

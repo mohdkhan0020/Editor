@@ -43,7 +43,43 @@ CardBottom.craft = {
   },
 };
 
-export const Card = ({ text,background,padding,children, fontSize, textAlign,color,fontFamily,position,width,height,maxWidth,maxHeight,fontWeight,borderTopLeftRadius,borderTopRightRadius,borderBottomRightRadius,borderBottomLeftRadius,opacity,display,top,right,left,bottom,float,marginTop,marginLeft,marginRight,marginBottom,paddingTop,paddingLeft,paddingRight,paddingBottom,textDecoration,textShadow }) => {
+export const Card = ({
+  text,
+  background,
+  padding,
+  children,
+  fontSize,
+  textAlign,
+  color,
+  fontFamily,
+  position,
+  width,
+  height,
+  maxWidth,
+  maxHeight,
+  fontWeight,
+  borderTopLeftRadius,
+  borderTopRightRadius,
+  borderBottomRightRadius,
+  borderBottomLeftRadius,
+  opacity,
+  display,
+  top,
+  right,
+  left,
+  bottom,
+  float,
+  marginTop,
+  marginLeft,
+  marginRight,
+  marginBottom,
+  paddingTop,
+  paddingLeft,
+  paddingRight,
+  paddingBottom,
+  textDecoration,
+  textShadow,
+}) => {
   return (
     <Container background={background} padding={padding}>
       <Element id="text" is={CardTop} canvas>

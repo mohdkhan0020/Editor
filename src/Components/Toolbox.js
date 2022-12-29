@@ -74,7 +74,6 @@ export const Toolbox = () => {
             Column
           </MaterialButton>
         </Grid>
-        
       </Grid>
     </Box>
   );

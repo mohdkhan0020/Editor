@@ -1,14 +1,17 @@
 import React from "react";
-import { SketchPicker } from "react-color";
+import { memo } from "react";
 import { useEffect, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { useNode } from "@craftjs/core";
-import { Slider, FormControl } from "@mui/material";
+import { FormControl, Typography } from "@mui/material";
 import General from "../Settings/General";
-import Dimension from "../Settings/Dimension";
-import Typography from "../Settings/Typography";
 import Decorations from "../Settings/Decorations";
-import Flex from "../Settings/Flex";
+import Dimension from "../Settings/Dimension";
+// import { SketchPicker } from "react-color";
+// import Dimension from "../Settings/Dimension";
+// import Typography from "../Settings/Typography";
+// import Decorations from "../Settings/Decorations";
+// import Flex from "../Settings/Flex";
 
 export const Text = ({
   text,
@@ -53,7 +56,7 @@ export const Text = ({
   alignSelf,
   flexGrow,
   flexShrink,
-  flexBasis
+  flexBasis,
 }) => {
   const {
     connectors: { connect, drag },
@@ -122,9 +125,7 @@ export const Text = ({
           alignSelf,
           flexGrow,
           flexShrink,
-          flexBasis
-          
-          
+          flexBasis,
         }}
       />
     </div>
@@ -132,60 +133,58 @@ export const Text = ({
 };
 
 const TextSettings = () => {
-  const {  
+  const {
     actions: { setProp },
-    fontSize,
     color,
-    textAlign,
-    float,
-    fontFamily,
-    display,
-    position,
-    top,
-    right,
-    bottom,
-    left,
-    width,
-    height,
-    maxWidth,
-    minHeight,
-    marginTop,
-    marginLeft,
-    marginRight,
-    marginBottom,
-    paddingTop,
-    paddingLeft,
-    paddingRight,
-    paddingBottom,
-    fontWeight,
-    letterSpacing,
-    lineHeight,
-    opacity,
-    borderTopRightRadius,
-    borderTopLeftRadius,
-    borderBottomRightRadius,
-    borderBottomLeftRadius,
-    border,
-    flexDirection,
-    justifyContent,
-    alignItems,
-    alignSelf,
-    flexGrow,
-    flexShrink,
-    flexBasis
-
+    // fontSize,
+    // textAlign,
+    // float,
+    // fontFamily,
+    // display,
+    // position,
+    // top,
+    // right,
+    // bottom,
+    // left,
+    // width,
+    // height,
+    // maxWidth,
+    // minHeight,
+    // marginTop,
+    // marginLeft,
+    // marginRight,
+    // marginBottom,
+    // paddingTop,
+    // paddingLeft,
+    // paddingRight,
+    // paddingBottom,
+    // fontWeight,
+    // letterSpacing,
+    // lineHeight,
+    // opacity,
+    // borderTopRightRadius,
+    // borderTopLeftRadius,
+    // borderBottomRightRadius,
+    // borderBottomLeftRadius,
+    // border,
+    // flexDirection,
+    // justifyContent,
+    // alignItems,
+    // alignSelf,
+    // flexGrow,
+    // flexShrink,
+    // flexBasis
   } = useNode((node) => ({
     fontSize: node.data.props.fontSize,
   }));
-  
+
   return (
     <>
       <FormControl size="small" component="fieldset">
         <General setProp={setProp} color={color} />
-        {/* <Dimension setProp={setProp}/>
-        <Typography setProp={setProp}/>
-        <Decorations setProp={setProp}/>
-        <Flex setProp={setProp}/> */}
+        <Decorations setProp={setProp} color={color} />
+        <Dimension setProp={setProp} color={color} />
+        <Typography setProp={setProp} color={color} />
       </FormControl>
     </>
   );
@@ -203,3 +202,4 @@ Text.craft = {
     settings: TextSettings,
   },
 };
+// export default memo(Text);
