@@ -24,7 +24,7 @@ export const ColumnChild = ({ text,background,padding,children,minHeight, fontSi
 
 export const Column = ({ background, padding }) => {
   return (
-    <Container background={background} padding={padding} className='kkkkk'>
+    <Container background={background} padding={padding} height={`100px`} className='kkkkk'>
       <Element id="text" is={ColumnChild}  canvas>
         
       </Element>
