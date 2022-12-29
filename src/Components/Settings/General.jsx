@@ -92,32 +92,27 @@ const General = ({setProp,color}) => {
                 type="text"
                 id="topvalue"
                 name="quantity"
-                onChange={(e) => {
-                  let str = e.target.value
-                  var res = str.replace(/\D/g, "");
-                  var answer = str.replace(/[^a-z]/gi, '');
-                  console.log("units "+answer);
-                  console.log("value "+res);
-                  if (isNaN(answer)) {
-                    settopcssvalue(res)
+                onKeyDown={(e)=>{
+                  if(e.key==="Enter"){
+                    let str = document.getElementById("topvalue").value
+                  var cssvalue = str.replace(/\D/g, "");
+                  var cssunits = str.replace(/[^a-z]/gi, '');
+                  console.log("units "+cssunits);
+                  console.log("value "+cssvalue);
+                  if (isNaN(cssunits)) {
+                    settopcssvalue(cssvalue)
                     let str=""
-                    str = str + answer;
+                    str = str + cssunits;
                     let units = ["px", "%", "vh", "em", "rem", "vw"];
                     if (units.includes(str)){
                       settopcssunits(str)
+                      document.getElementById("topvalue").value=cssvalue;
                     }
                   }
-                  
-                  // settopcssvalue(e.target.value);
                   setProp((props) => {
                     // console.log(`${topcssvalue}${topcssunits}`);
-                    return (props.top = `${res}${answer}`);
+                    return (props.top = `${cssvalue}${cssunits}`);
                   });
-                }}
-
-                onKeyDown={(e)=>{
-                  if(e.keyCode==13){
-                    document.getElementById("topvalue").value=topcssvalue
 
                   }
                 }}
@@ -129,7 +124,7 @@ const General = ({setProp,color}) => {
                 value={topcssunits}
                 onChange={(event) => {
                   settopcssunits(`${event.target.value}`);
-                  document.getElementById("topvalue").value=`${topcssvalue}${event.target.value}`;
+                  document.getElementById("topvalue").value=`${topcssvalue}`;
                   setProp((props) => {
                     return (props.top = `${topcssvalue}${event.target.value}`);
                   });
