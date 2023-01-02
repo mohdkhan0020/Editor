@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import { FormControl } from '@mui/material';
+import SelectTag from '../Input/SelectTag';
+import InputTag from '../Input/InputTag';
+import SelectTagUnits from '../Input/SelectTagUnits';
 
-const Flex = ({setProp}) => {
-    const [flexbasiscssvalue, setflexbasiscssvalue] = useState(0);
+const Flex = ({setprop}) => {
+    const [flexbasiscssvalue, setflexbasiscssvalue] = useState('');
     const [flexbasiscssunits, setflexbasiscssunits] = useState(`px`);
   return (<>
   
@@ -12,77 +15,28 @@ const Flex = ({setProp}) => {
           <FormControl>
           <label htmlFor="textalign">Flex</label>
             <div style={{ display: "flex" }}>
-            <select
-              name="textalign"
-              id="textalign"
-              onChange={(event) => {
-                setProp((props) => (props.display = event.target.value));
-              }}
-            >
-              <option value="block">Disable</option>
-              <option value="flex">Enable</option>
-            </select>
+          <SelectTag id={"FlexContainer"}setprop={setprop}/>
             </div>
           </FormControl>
           <FormControl>
           <label htmlFor="Position">Flex Direction</label>
             <div style={{ display: "flex" }}>
-            <select
-              name="Position"
-              id="Position"
-              onChange={(event) => {
-                console.log(event.target.value);
-                setProp((props) => (props.flexDirection = event.target.value));
-              }}
-            >
-              <option value="row">row</option>
-              <option value="row-reverse">row-reverse</option>
-              <option value="column">column</option>
-              <option value="column-reverse">column-reverse</option>
-            </select>
+            <SelectTag id={"FlexDirection"}setprop={setprop}/>
             </div>
-
-
           </FormControl>
         </div>
         <div style={{ display: "flex" }}>
           <FormControl>
           <label htmlFor="textalign">Justify Content</label>
             <div style={{ display: "flex" }}>
-            <select
-              name="textalign"
-              id="textalign"
-              onChange={(event) => {
-                setProp((props) => (props.justifyContent = event.target.value));
-              }}
-            >
-              <option value="flex-start">flex-start</option>
-              <option value="flex-end">flex-end</option>
-              <option value="space-between">space-between</option>
-              <option value="space-around">space-around</option>
-              <option value="center">center</option>
-            </select>
+            <SelectTag id={"JustifyContent"}setprop={setprop}/>
             </div>
           </FormControl>
           <FormControl>
           <label htmlFor="Position">Align Items</label>
             <div style={{ display: "flex" }}>
-            <select
-              name="Position"
-              id="Position"
-              onChange={(event) => {
-                console.log(event.target.value);
-                setProp((props) => (props.alignItems = event.target.value));
-              }}
-            >
-              <option value="flex-start">flex-start</option>
-              <option value="flex-end">flex-end</option>
-              <option value="stretch">stretch</option>
-              <option value="center">center</option>
-            </select>
+            <SelectTag id={"AlignItems"}setprop={setprop}/>
             </div>
-
-
           </FormControl>
         </div>
        </FormControl>
@@ -100,7 +54,7 @@ const Flex = ({setProp}) => {
                 max="50"
                 onChange={(e) => {
                   
-                  setProp((props) => {
+                  setprop((props) => {
                     return (props.flexGrow = e.target.value);
                   });
                 }}
@@ -120,7 +74,7 @@ const Flex = ({setProp}) => {
                 max="50"
                 onChange={(e) => {
                   
-                  setProp((props) => {
+                  setprop((props) => {
                     return (props.flexShrink = e.target.value);
                   });
                 }}
@@ -139,67 +93,33 @@ const Flex = ({setProp}) => {
           <FormControl>
           <label htmlFor="textalign">Align Self</label>
             <div style={{ display: "flex" }}>
-            <select
-              name="Position"
-              id="Position"
-              onChange={(event) => {
-                console.log(event.target.value);
-                setProp((props) => (props.alignSelf = event.target.value));
-              }}
-            >
-              <option value="auto">auto</option>
-              <option value="flex-start">flex-start</option>
-              <option value="flex-end">flex-end</option>
-              <option value="stretch">stretch</option>
-              <option value="center">center</option>
-            </select>
+            <SelectTag id={"AlignSelf"}setprop={setprop}/>
             </div>
           </FormControl>
           <FormControl>
           <label htmlFor="Top">Flex Basis</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
+            <InputTag
+              id={"FlexBasis"}
               value={flexbasiscssvalue}
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setflexbasiscssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${flexbasiscssvalue}${flexbasiscssunits}`);
-                  return (props.flexBasis = `${e.target.value}${flexbasiscssunits}`);
-                });
-              }}
-            ></input>
+              setcssvalue={setflexbasiscssvalue}
+              setcssunits={setflexbasiscssunits}
+              setprop={setprop}
+            />
 
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setflexbasiscssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.flexBasis = `${flexbasiscssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+            <SelectTagUnits
+              id={"FlexBasis"}
+              units={setflexbasiscssunits}
+              setcssvalue={setflexbasiscssvalue}
+              setProp={setprop}
+              value={flexbasiscssvalue}
+              defaultvalue={flexbasiscssunits}
+            />
             </div>
-
-            
           </FormControl>
         </div>
        </FormControl>
        </>
-      
   )
 }
-
 export default Flex

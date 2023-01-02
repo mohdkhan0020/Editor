@@ -1,41 +1,44 @@
 import React,{useState} from 'react'
 import {FormControl } from "@mui/material";
+import SelectTag from '../Input/SelectTag';
+import InputTag from '../Input/InputTag';
+import SelectTagUnits from '../Input/SelectTagUnits';
 
-const Dimension = ({setProp}) => {
-    const [widthcssvalue, setwidthcssvalue] = useState(0);
+const Dimension = ({setprop}) => {
+    const [widthcssvalue, setwidthcssvalue] = useState('');
     const [widthcssunits, setwidthcssunits] = useState(`px`);
   
-    const [maxwidthcssvalue, setmaxwidthcssvalue] = useState(0);
+    const [maxwidthcssvalue, setmaxwidthcssvalue] = useState('');
     const [maxwidthcssunits, setmaxwidthcssunits] = useState(`px`);
   
-    const [heightcssvalue, setheightcssvalue] = useState(0);
+    const [heightcssvalue, setheightcssvalue] = useState('');
     const [heightcssunits, setheightcssunits] = useState(`px`);
   
-    const [minheightcssvalue, setminheightcssvalue] = useState(0);
+    const [minheightcssvalue, setminheightcssvalue] = useState('');
     const [minheightcssunits, setminheightcssunits] = useState(`px`);
   
-    const [margintopcssvalue, setmargintopcssvalue] = useState(0);
+    const [margintopcssvalue, setmargintopcssvalue] = useState('');
     const [margintopcssunits, setmargintopcssunits] = useState(`px`);
   
-    const [marginbottomcssvalue, setmarginbottomcssvalue] = useState(0);
+    const [marginbottomcssvalue, setmarginbottomcssvalue] = useState('');
     const [marginbottomcssunits, setmarginbottomcssunits] = useState(`px`);
   
-    const [marginleftcssvalue, setmarginleftcssvalue] = useState(0);
+    const [marginleftcssvalue, setmarginleftcssvalue] = useState('');
     const [marginleftcssunits, setmarginleftcssunits] = useState(`px`);
   
-    const [marginrightcssvalue, setmarginrightcssvalue] = useState(0);
+    const [marginrightcssvalue, setmarginrightcssvalue] = useState('');
     const [marginrightcssunits, setmarginrightcssunits] = useState(`px`);
   
-    const [paddingtopcssvalue, setpaddingtopcssvalue] = useState(0);
+    const [paddingtopcssvalue, setpaddingtopcssvalue] = useState('');
     const [paddingtopcssunits, setpaddingtopcssunits] = useState(`px`);
   
-    const [paddingbottomcssvalue, setpaddingbottomcssvalue] = useState(0);
+    const [paddingbottomcssvalue, setpaddingbottomcssvalue] = useState('');
     const [paddingbottomcssunits, setpaddingbottomcssunits] = useState(`px`);
   
-    const [paddingleftcssvalue, setpaddingleftcssvalue] = useState(0);
+    const [paddingleftcssvalue, setpaddingleftcssvalue] = useState('');
     const [paddingleftcssunits, setpaddingleftcssunits] = useState(`px`);
   
-    const [paddingrightcssvalue, setpaddingrightcssvalue] = useState(0);
+    const [paddingrightcssvalue, setpaddingrightcssvalue] = useState('');
     const [paddingrightcssunits, setpaddingrightcssunits] = useState(`px`);
   return (
     <>
@@ -44,245 +47,129 @@ const Dimension = ({setProp}) => {
           <FormControl>
           <label htmlFor="Width">Width</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"Width"}
               value={widthcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setwidthcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${widthcssvalue}${widthcssunits}`);
-                  return (props.width = `${e.target.value}${widthcssunits}`);
-                });
-              }}
-            ></input>
-
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setwidthcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.width = `${widthcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+              setcssvalue={setwidthcssvalue}
+              setcssunits={setwidthcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"Width"}
+              units={setwidthcssunits}
+              setcssvalue={setwidthcssvalue}
+              setProp={setprop}
+              value={widthcssvalue}
+              defaultvalue={widthcssunits}
+            />
             </div>
           </FormControl>
           <FormControl>
           <label htmlFor="Top">height</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"Height"}
               value={heightcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setheightcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${heightcssvalue}${heightcssunits}`);
-                  return (props.height = `${e.target.value}${heightcssunits}`);
-                });
-              }}
-            ></input>
+              setcssvalue={setheightcssvalue}
+              setcssunits={setheightcssunits}
+              setprop={setprop}
+            />
 
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setheightcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.height = `${heightcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+            <SelectTagUnits
+              id={"Height"}
+              units={setheightcssunits}
+              setcssvalue={setheightcssvalue}
+              setProp={setprop}
+              value={heightcssvalue}
+              defaultvalue={heightcssunits}
+            />
             </div>
-
-            
           </FormControl>
         </div>
-        
-       
-        {/*  */}
-
         <div style={{ display: "flex" }}>
           <FormControl>
           <label htmlFor="Width">Max Width</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"MaxWidth"}
               value={maxwidthcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setmaxwidthcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${maxwidthcssvalue}${maxwidthcssunits}`);
-                  return (props.maxWidth = `${e.target.value}${maxwidthcssunits}`);
-                });
-              }}
-            ></input>
-
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setmaxwidthcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.maxWidth = `${maxwidthcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+              setcssvalue={setmaxwidthcssvalue}
+              setcssunits={setmaxwidthcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"MaxWidth"}
+              units={setmaxwidthcssunits}
+              setcssvalue={setmaxwidthcssvalue}
+              setProp={setprop}
+              value={maxwidthcssvalue}
+              defaultvalue={maxwidthcssunits}
+            />
             </div>
           </FormControl>
           <FormControl>
           <label htmlFor="Top">Min Height</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"MinHeight"}
               value={minheightcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setminheightcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${minheightcssvalue}${minheightcssunits}`);
-                  return (props.minHeight = `${e.target.value}${minheightcssunits}`);
-                });
-              }}
-            ></input>
-
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setminheightcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.minHeight = `${minheightcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+              setcssvalue={setminheightcssvalue}
+              setcssunits={setminheightcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"MinHeight"}
+              units={setminheightcssunits}
+              setcssvalue={setminheightcssvalue}
+              setProp={setprop}
+              value={minheightcssvalue}
+              defaultvalue={minheightcssunits}
+            />
             </div>
-
-            
           </FormControl>
         </div>
         <h2>Margin</h2>
         <FormControl>
-
           <div style={{ display: "flex" }}>
           <FormControl>
             <label htmlFor="Top">Margin Top</label>
             <div style={{ display: "flex" }}>
-              <input
-                type="number"
-                value={margintopcssvalue}
-                id="quantity"
-                name="quantity"
-                min="0"
-                max="50"
-                onChange={(e) => {
-                  setmargintopcssvalue(e.target.value);
-                  setProp((props) => {
-                    console.log(`${margintopcssvalue}${margintopcssunits}`);
-                    return (props.marginTop = `${e.target.value}${margintopcssunits}`);
-                  });
-                }}
-              ></input>
-
-              <select
-                name="Top"
-                id="Top"
-                onChange={(event) => {
-                  setmargintopcssunits(`${event.target.value}`);
-                  setProp((props) => {
-                    return (props.marginTop = `${margintopcssvalue}${event.target.value}`);
-                  });
-                }}
-              >
-                <option value="px">px</option>
-                <option value="%">%</option>
-                <option value="vh">vh</option>
-                <option value="em">em</option>
-                <option value="rem">rem</option>
-                <option value="vw">vw</option>
-              </select>
+            <InputTag
+              id={"MarginTop"}
+              value={margintopcssvalue}
+              setcssvalue={setmargintopcssvalue}
+              setcssunits={setmargintopcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"MarginTop"}
+              units={setmargintopcssunits}
+              setcssvalue={setmargintopcssvalue}
+              setProp={setprop}
+              value={margintopcssvalue}
+              defaultvalue={margintopcssunits}
+            />
             </div>
           </FormControl>
 
           <FormControl>
             <label htmlFor="Top">Margin Bottom</label>
             <div style={{ display: "flex" }}>
-              <input
-                type="number"
-                value={marginbottomcssvalue}
-                id="quantity"
-                name="quantity"
-                min="0"
-                max="50"
-                onChange={(e) => {
-                  setmarginbottomcssvalue(e.target.value);
-                  setProp((props) => {
-                    console.log(`${marginbottomcssvalue}${marginbottomcssunits}`);
-                    return (props.marginBottom = `${e.target.value}${marginbottomcssunits}`);
-                  });
-                }}
-              ></input>
-
-              <select
-                name="Top"
-                id="Top"
-                onChange={(event) => {
-                  setmarginbottomcssunits(`${event.target.value}`);
-                  setProp((props) => {
-                    return (props.marginBottom = `${marginbottomcssvalue}${event.target.value}`);
-                  });
-                }}
-              >
-                <option value="px">px</option>
-                <option value="%">%</option>
-                <option value="vh">vh</option>
-                <option value="em">em</option>
-                <option value="rem">rem</option>
-                <option value="vw">vw</option>
-              </select>
+            <InputTag
+              id={"MarginBottom"}
+              value={marginbottomcssvalue}
+              setcssvalue={setmarginbottomcssvalue}
+              setcssunits={setmarginbottomcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"MarginBottom"}
+              units={setmarginbottomcssunits}
+              setcssvalue={setmarginbottomcssvalue}
+              setProp={setprop}
+              value={marginbottomcssvalue}
+              defaultvalue={marginbottomcssunits}
+            />
             </div>
 
 
@@ -293,80 +180,42 @@ const Dimension = ({setProp}) => {
           <FormControl>
           <label htmlFor="Top">Margin Left</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"MarginLeft"}
               value={marginleftcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setmarginleftcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${marginleftcssvalue}${marginleftcssunits}`);
-                  return (props.marginLeft = `${e.target.value}${marginleftcssunits}`);
-                });
-              }}
-            ></input>
-
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setmarginleftcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.marginLeft = `${marginleftcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+              setcssvalue={setmarginleftcssvalue}
+              setcssunits={setmarginleftcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"MarginLeft"}
+              units={setmarginleftcssunits}
+              setcssvalue={setmarginleftcssvalue}
+              setProp={setprop}
+              value={marginleftcssvalue}
+              defaultvalue={marginleftcssunits}
+            />
             </div>
           </FormControl>
           <FormControl>
           <label htmlFor="Top">Margin right</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"MarginRight"}
               value={marginrightcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setmarginrightcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${marginrightcssvalue}${marginrightcssunits}`);
-                  return (props.marginRight = `${e.target.value}${marginrightcssunits}`);
-                });
-              }}
-            ></input>
-
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setmarginrightcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.marginRight = `${marginrightcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+              setcssvalue={setmarginrightcssvalue}
+              setcssunits={setmarginrightcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"MarginRight"}
+              units={setmarginrightcssunits}
+              setcssvalue={setmarginrightcssvalue}
+              setProp={setprop}
+              value={marginrightcssvalue}
+              defaultvalue={marginrightcssunits}
+            />
             </div>
-
-            
           </FormControl>
         </div>
         </FormControl>
@@ -377,81 +226,43 @@ const Dimension = ({setProp}) => {
           <FormControl>
             <label htmlFor="Top">Padding Top</label>
             <div style={{ display: "flex" }}>
-              <input
-                type="number"
-                value={paddingtopcssvalue}
-                id="quantity"
-                name="quantity"
-                min="0"
-                max="50"
-                onChange={(e) => {
-                  setpaddingtopcssvalue(e.target.value);
-                  setProp((props) => {
-                    console.log(`${paddingtopcssvalue}${paddingtopcssunits}`);
-                    return (props.paddingTop = `${e.target.value}${paddingtopcssunits}`);
-                  });
-                }}
-              ></input>
-
-              <select
-                name="Top"
-                id="Top"
-                onChange={(event) => {
-                  setpaddingtopcssunits(`${event.target.value}`);
-                  setProp((props) => {
-                    return (props.paddingTop = `${paddingtopcssvalue}${event.target.value}`);
-                  });
-                }}
-              >
-                <option value="px">px</option>
-                <option value="%">%</option>
-                <option value="vh">vh</option>
-                <option value="em">em</option>
-                <option value="rem">rem</option>
-                <option value="vw">vw</option>
-              </select>
+            <InputTag
+              id={"PaddingTop"}
+              value={paddingtopcssvalue}
+              setcssvalue={setpaddingtopcssvalue}
+              setcssunits={setpaddingtopcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"PaddingTop"}
+              units={setpaddingtopcssunits}
+              setcssvalue={setpaddingtopcssvalue}
+              setProp={setprop}
+              value={paddingtopcssvalue}
+              defaultvalue={paddingtopcssunits}
+            />
             </div>
           </FormControl>
 
           <FormControl>
             <label htmlFor="Top">Padding Bottom</label>
             <div style={{ display: "flex" }}>
-              <input
-                type="number"
-                value={paddingbottomcssvalue}
-                id="quantity"
-                name="quantity"
-                min="0"
-                max="50"
-                onChange={(e) => {
-                  setpaddingbottomcssvalue(e.target.value);
-                  setProp((props) => {
-                    console.log(`${paddingbottomcssvalue}${paddingbottomcssunits}`);
-                    return (props.paddingBottom = `${e.target.value}${paddingbottomcssunits}`);
-                  });
-                }}
-              ></input>
-
-              <select
-                name="Top"
-                id="Top"
-                onChange={(event) => {
-                  setpaddingbottomcssunits(`${event.target.value}`);
-                  setProp((props) => {
-                    return (props.paddingBottom = `${paddingbottomcssvalue}${event.target.value}`);
-                  });
-                }}
-              >
-                <option value="px">px</option>
-                <option value="%">%</option>
-                <option value="vh">vh</option>
-                <option value="em">em</option>
-                <option value="rem">rem</option>
-                <option value="vw">vw</option>
-              </select>
+            <InputTag
+              id={"PaddingBottom"}
+              value={paddingbottomcssvalue}
+              setcssvalue={setpaddingbottomcssvalue}
+              setcssunits={setpaddingbottomcssunits}
+              setprop={setprop}
+            />
+           <SelectTagUnits
+              id={"PaddingBottom"}
+              units={setpaddingbottomcssunits}
+              setcssvalue={setpaddingbottomcssvalue}
+              setProp={setprop}
+              value={paddingbottomcssvalue}
+              defaultvalue={paddingbottomcssunits}
+            />
             </div>
-
-
           </FormControl>
         </div>
 
@@ -459,84 +270,45 @@ const Dimension = ({setProp}) => {
           <FormControl>
           <label htmlFor="Top">Padding Left</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"PaddingLeft"}
               value={paddingleftcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setpaddingleftcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${paddingleftcssvalue}${paddingleftcssunits}`);
-                  return (props.paddingLeft = `${e.target.value}${paddingleftcssunits}`);
-                });
-              }}
-            ></input>
-
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setpaddingleftcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.paddingLeft = `${paddingleftcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+              setcssvalue={setpaddingleftcssvalue}
+              setcssunits={setpaddingleftcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"PaddingLeft"}
+              units={setpaddingleftcssunits}
+              setcssvalue={setpaddingleftcssvalue}
+              setProp={setprop}
+              value={paddingleftcssvalue}
+              defaultvalue={paddingleftcssunits}
+            />
             </div>
           </FormControl>
           <FormControl>
           <label htmlFor="Top">padding right</label>
             <div style={{ display: "flex" }}>
-            <input
-              type="number"
+            <InputTag
+              id={"PaddingLeft"}
               value={paddingrightcssvalue}
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="50"
-              onChange={(e) => {
-                setpaddingrightcssvalue(e.target.value);
-                setProp((props) => {
-                  console.log(`${paddingrightcssvalue}${paddingrightcssunits}`);
-                  return (props.paddingRight = `${e.target.value}${paddingrightcssunits}`);
-                });
-              }}
-            ></input>
-
-            <select
-              name="Top"
-              id="Top"
-              onChange={(event) => {
-                setpaddingrightcssunits(`${event.target.value}`);
-                setProp((props) => {
-                  return (props.paddingRight = `${paddingrightcssvalue}${event.target.value}`);
-                });
-              }}
-            >
-              <option value="px">px</option>
-              <option value="%">%</option>
-              <option value="vh">vh</option>
-              <option value="em">em</option>
-              <option value="rem">rem</option>
-              <option value="vw">vw</option>
-            </select>
+              setcssvalue={setpaddingrightcssvalue}
+              setcssunits={setpaddingrightcssunits}
+              setprop={setprop}
+            />
+            <SelectTagUnits
+              id={"PaddingRight"}
+              units={setpaddingrightcssunits}
+              setcssvalue={setpaddingrightcssvalue}
+              setProp={setprop}
+              value={paddingrightcssvalue}
+              defaultvalue={paddingrightcssunits}
+            />
             </div>
-
-            
           </FormControl>
         </div>
         </FormControl>
-      
     </>
   )
 }
