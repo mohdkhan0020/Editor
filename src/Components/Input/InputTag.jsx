@@ -22,11 +22,37 @@ const InputTag = ({ id, setprop, setcssvalue, setcssunits, value }) => {
           setcssunits(str);
         }
       }
-      if (id === "Top") {
-        setprop((props) => {
-          return (props.top = `${cssvalue}${cssunits}`);
-        });
+      switch (str) {
+        case "auto":
+          finalValue = "auto";
+          setcssunits("");
+          setcssvalue("auto");
+          break;
+        case "inherit":
+          finalValue = "inherit";
+          setcssunits("");
+          setcssvalue("inherit");
+          break;
+        case "initial":
+          finalValue = "initial";
+          setcssvalue("initial");
+          setcssunits("");
+          break;
+        case "revert":
+          finalValue = "revert";
+          setcssvalue("revert");
+          setcssunits("");
+          break;
+        case "unset":
+          finalValue = "unset";
+          setcssvalue("unset");
+          setcssunits("");
+          break;
+        default:
+          finalValue = `${cssvalue}${cssunits}`;
+          console.log(finalValue);
       }
+
       switch (id) {
         case "Top":
           setprop((props) => (props.top = finalValue));
