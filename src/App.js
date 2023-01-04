@@ -10,11 +10,21 @@ import { CardBottom } from "./Components/User/Card";
 import { Container } from "./Components/User/Container";
 import { Button } from "./Components/User/Button";
 import { Card } from "./Components/User/Card";
+import { ThreeColumn, ThreeColumnChild } from "./Components/User/ThreeColumn";
 import { Text } from "./Components/User/Text";
+import { Image, ImageChild } from "./Components/User/Image";
+import { FourColumn, FourColumnChild } from "./Components/User/FourColumn";
+import {
+  DoubleColumn,
+  DoubleColumnChild,
+} from "./Components/User/DoubleColumn";
 import { Column, ColumnChild } from "./Components/User/Column";
 
 import { Editor, Frame, Element } from "@craftjs/core";
 import { Class } from "@mui/icons-material";
+import Table from "./Components/User/Table";
+
+// import { ThreeColumnChild } from "./Components/User/ThreeColumn";
 
 export default function App() {
   return (
@@ -30,8 +40,18 @@ export default function App() {
           CardTop,
           CardBottom,
           Container,
+          Paper,
           Column,
           ColumnChild,
+          DoubleColumn,
+          DoubleColumnChild,
+          ThreeColumn,
+          ThreeColumnChild,
+          FourColumn,
+          FourColumnChild,
+          Image,
+          ImageChild,
+          Table,
         }}
       >
         <Grid container spacing={3} style={{ paddingTop: "10px" }}>
@@ -39,14 +59,14 @@ export default function App() {
           <Grid item xs style={{ width: "250px" }}>
             <Frame>
               <Element is={Container} padding={5} background="#456" canvas>
-                <Container padding={5} height="100vh" background="#eee">
+                <Container padding={5} height="10vh" background="#eee" text="">
                   <Card />
                   <Button size="small" variant="outlined">
                     Click
                   </Button>
                   <Text size="small" text="Hi world!" />
                   {/* <Text /> */}
-                  <Container padding={6} background="#999">
+                  <Container padding={6} background="#999" text="">
                     <Element
                       is={Container}
                       padding={2}
@@ -60,7 +80,7 @@ export default function App() {
               </Element>
             </Frame>
           </Grid>
-          <Grid item lg={3}>
+          <Grid item lg={1}>
             <Paper style={{ width: "250px" }} className={Class.root}>
               <Toolbox />
               <SettingsPanel />

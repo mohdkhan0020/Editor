@@ -7,11 +7,16 @@ import { Card } from "./User/Card";
 import { Button } from "./User/Button";
 import { Text } from "./User/Text";
 import { Column } from "./User/Column";
+import { DoubleColumn, DoubleColumnChild } from "./User/DoubleColumn";
+import { ThreeColumn } from "./User/ThreeColumn";
+import { FourColumn } from "./User/FourColumn";
+import { Image } from "./User/Image";
+import Table from "./User/Table";
 
 export const Toolbox = () => {
   const { connectors, query } = useEditor();
   return (
-    <Box px={2} py={2}>
+    <Box px={8} py={2}>
       <Grid
         container
         direction="column"
@@ -68,10 +73,62 @@ export const Toolbox = () => {
         </Grid>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) => connectors.create(ref, <Column />)}
+            ref={(ref) =>
+              connectors.create(
+                ref,
+                // <Element is={Column} padding={20} canvas />
+                <Column text="Column Text" />
+              )
+            }
             variant="contained"
           >
             Column
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <DoubleColumn />)}
+            variant="contained"
+          >
+            2Column
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <ThreeColumn />)}
+            variant="contained"
+          >
+            3Column
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) =>
+              connectors.create(
+                ref,
+
+                <FourColumn />
+              )
+            }
+            variant="contained"
+          >
+            4Column
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <Image />)}
+            variant="contained"
+          >
+            Image
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <Table />)}
+            variant="contained"
+          >
+            Table
           </MaterialButton>
         </Grid>
       </Grid>
