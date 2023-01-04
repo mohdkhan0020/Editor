@@ -8,16 +8,16 @@ import InputTag from "../Input/InputTag";
 
 const General = ({ setprop, color }) => {
   const [topcssvalue, settopcssvalue] = useState('');
-  const [topcssunits, settopcssunits] = useState(`px`);
+  const [topcssunits, settopcssunits] = useState('');
 
   const [bottomcssvalue, setbottomcssvalue] = useState('');
-  const [bottomcssunits, setbottomcssunits] = useState(`px`);
+  const [bottomcssunits, setbottomcssunits] = useState('');
 
   const [leftcssvalue, setleftcssvalue] = useState('');
-  const [leftcssunits, setleftcssunits] = useState(`px`);
+  const [leftcssunits, setleftcssunits] = useState('');
 
   const [rightcssvalue, setrightcssvalue] = useState('');
-  const [rightcssunits, setrightcssunits] = useState(`px`);
+  const [rightcssunits, setrightcssunits] = useState('');
   return (
     <div>
       <h1>General</h1>

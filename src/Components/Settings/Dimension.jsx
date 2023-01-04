@@ -1,45 +1,44 @@
-import React,{useState} from 'react'
+import React,{useState,memo} from 'react'
 import {FormControl } from "@mui/material";
-import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
 import SelectTagUnits from '../Input/SelectTagUnits';
 
 const Dimension = ({setprop}) => {
     const [widthcssvalue, setwidthcssvalue] = useState('');
-    const [widthcssunits, setwidthcssunits] = useState(`px`);
+    const [widthcssunits, setwidthcssunits] = useState('');
   
     const [maxwidthcssvalue, setmaxwidthcssvalue] = useState('');
-    const [maxwidthcssunits, setmaxwidthcssunits] = useState(`px`);
+    const [maxwidthcssunits, setmaxwidthcssunits] = useState('');
   
     const [heightcssvalue, setheightcssvalue] = useState('');
-    const [heightcssunits, setheightcssunits] = useState(`px`);
+    const [heightcssunits, setheightcssunits] = useState('');
   
     const [minheightcssvalue, setminheightcssvalue] = useState('');
-    const [minheightcssunits, setminheightcssunits] = useState(`px`);
+    const [minheightcssunits, setminheightcssunits] = useState('');
   
     const [margintopcssvalue, setmargintopcssvalue] = useState('');
-    const [margintopcssunits, setmargintopcssunits] = useState(`px`);
+    const [margintopcssunits, setmargintopcssunits] = useState('');
   
     const [marginbottomcssvalue, setmarginbottomcssvalue] = useState('');
-    const [marginbottomcssunits, setmarginbottomcssunits] = useState(`px`);
+    const [marginbottomcssunits, setmarginbottomcssunits] = useState('');
   
     const [marginleftcssvalue, setmarginleftcssvalue] = useState('');
-    const [marginleftcssunits, setmarginleftcssunits] = useState(`px`);
+    const [marginleftcssunits, setmarginleftcssunits] = useState('');
   
     const [marginrightcssvalue, setmarginrightcssvalue] = useState('');
-    const [marginrightcssunits, setmarginrightcssunits] = useState(`px`);
+    const [marginrightcssunits, setmarginrightcssunits] = useState('');
   
     const [paddingtopcssvalue, setpaddingtopcssvalue] = useState('');
-    const [paddingtopcssunits, setpaddingtopcssunits] = useState(`px`);
+    const [paddingtopcssunits, setpaddingtopcssunits] = useState('');
   
     const [paddingbottomcssvalue, setpaddingbottomcssvalue] = useState('');
-    const [paddingbottomcssunits, setpaddingbottomcssunits] = useState(`px`);
+    const [paddingbottomcssunits, setpaddingbottomcssunits] = useState('');
   
     const [paddingleftcssvalue, setpaddingleftcssvalue] = useState('');
-    const [paddingleftcssunits, setpaddingleftcssunits] = useState(`px`);
+    const [paddingleftcssunits, setpaddingleftcssunits] = useState('');
   
     const [paddingrightcssvalue, setpaddingrightcssvalue] = useState('');
-    const [paddingrightcssunits, setpaddingrightcssunits] = useState(`px`);
+    const [paddingrightcssunits, setpaddingrightcssunits] = useState('');
   return (
     <>
         <h1>Dimension</h1>
@@ -313,4 +312,4 @@ const Dimension = ({setprop}) => {
   )
 }
 
-export default Dimension
+export default memo(Dimension)

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,memo} from 'react'
 import { FormControl } from '@mui/material';
 import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
@@ -6,13 +6,13 @@ import SelectTagUnits from '../Input/SelectTagUnits';
 
 const Typography = ({setprop}) => {
     const [fontsizecssvalue, setfontsizecssvalue] = useState('');
-    const [fontsizecssunits, setfontsizecssunits] = useState(`px`);
+    const [fontsizecssunits, setfontsizecssunits] = useState('');
   
     const [letterSpacingcssvalue, setletterSpacingcssvalue] = useState('');
-    const [letterSpacingcssunits, setletterSpacingcssunits] = useState(`px`);
+    const [letterSpacingcssunits, setletterSpacingcssunits] = useState('');
 
     const [lineheightcssvalue, setlineheightcssvalue] = useState('');
-    const [lineheightcssunits, setlineheightcssunits] = useState(`px`);
+    const [lineheightcssunits, setlineheightcssunits] = useState('');
   return (
     <div>
         <h1>Typography</h1>
@@ -107,4 +107,4 @@ const Typography = ({setprop}) => {
     </div>
   )
 }
-export default Typography
+export default memo(Typography)

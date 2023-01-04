@@ -1,34 +1,32 @@
 import React, { useState } from "react";
 import { FormControl, Slider } from "@mui/material";
 import { memo } from "react";
-import options from "../User/Data";
-
 import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
 import SelectTagUnits from '../Input/SelectTagUnits';
 const Decorations = ({ setprop }) => {
   const [borderwidthcssvalue, setborderwidthcssvalue] = useState('');
-  const [borderwidthcssunits, setborderwidthcssunits] = useState(`px`);
+  const [borderwidthcssunits, setborderwidthcssunits] = useState('');
 
   const [borderradiusbottomleftcssvalue, setborderradiusbottomleftcssvalue] =
     useState('');
   const [borderradiusbottomleftcssunits, setborderradiusbottomleftcssunits] =
-    useState(`px`);
+    useState('');
 
   const [borderradiusbottomrightcssvalue, setborderradiusbottomrightcssvalue] =
     useState('');
   const [borderradiusbottomrightcssunits, setborderradiusbottomrightcssunits] =
-    useState(`px`);
+    useState('');
 
   const [borderradiustopleftcssvalue, setborderradiustopleftcssvalue] =
     useState('');
   const [borderradiustopleftcssunits, setborderradiustopleftcssunits] =
-    useState(`px`);
+    useState('');
 
   const [borderradiustoprightcssvalue, setborderradiustoprightcssvalue] =
     useState('');
   const [borderradiustoprightcssunits, setborderradiustoprightcssunits] =
-    useState(`px`);
+    useState('');
   return (
     <>
       <h1>Decorations</h1>

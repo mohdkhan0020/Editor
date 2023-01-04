@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,memo} from 'react'
 import { FormControl } from '@mui/material';
 import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
@@ -6,7 +6,7 @@ import SelectTagUnits from '../Input/SelectTagUnits';
 
 const Flex = ({setprop}) => {
     const [flexbasiscssvalue, setflexbasiscssvalue] = useState('');
-    const [flexbasiscssunits, setflexbasiscssunits] = useState(`px`);
+    const [flexbasiscssunits, setflexbasiscssunits] = useState('');
   return (<>
   
         <FormControl>
@@ -122,4 +122,4 @@ const Flex = ({setprop}) => {
        </>
   )
 }
-export default Flex
+export default memo(Flex)

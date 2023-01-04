@@ -7,44 +7,49 @@ const SelectTag = ({ setprop, id}) => {
     <>
     <select
         onChange={(event) => {
-          setprop((props) => {
-            if (id === "Float") {
-              return (props.float = event.target.value);
-            }
-            if (id === "Display") {
-              return (props.display = event.target.value);
-            }
-            if (id === "Position") {
-              return (props.position = event.target.value);
-            }
-            if (id === "FontFamily") {
-              return (props.fontFamily = event.target.value);
-            }
-            if (id === "TextAlign") {
-              return (props.textAlign = event.target.value);
-            }
-            if (id === "FontWeight") {
-              return (props.textAlign = event.target.value);
-            }
-            if (id === "FlexContainer") {
-              return (props.display = event.target.value);
-            }
-            if (id === "FlexDirection") {
-              return (props.flexDirection = event.target.value);
-            }
-            if (id === "JustifyContent") {
-              return (props.justifyContent = event.target.value);
-            }
-            if (id === "AlignItems") {
-              return (props.alignItems = event.target.value);
-            }
-            if (id === "AlignSelf") {
-              return (props.alignSelf = event.target.value);
-            }
-            if (id === "BorderStyle") {
-              return (props.borderStyle = event.target.value);
-            }
-          });
+          let finalValue = event.target.value;
+
+          switch (id) {
+            case "Float":
+              setprop((props) => (props.float = finalValue));
+              break;
+            case "Display":
+              setprop((props) => (props.display = finalValue));
+              break;
+            case "Position":
+              setprop((props) => (props.position = finalValue));
+              break;
+            case "FontFamily":
+              setprop((props) => (props.fontFamily = finalValue));
+              break;
+            case "TextAlign":
+              setprop((props) => (props.textAlign = finalValue));
+              break;
+            case "FontWeight":
+              setprop((props) => (props.fontWeight  = finalValue));
+              break;
+            case "FlexContainer":
+              setprop((props) => (props.display = finalValue));
+              break;
+            case "FlexDirection":
+              setprop((props) => (props.flexDirection = finalValue));
+              break;
+            case "JustifyContent":
+              setprop((props) => (props.justifyContent = finalValue));
+              break;
+            case "AlignItems":
+              setprop((props) => (props.alignItems = finalValue));
+              break;
+            case "AlignSelf":
+              setprop((props) => (props.alignSelf = finalValue));
+              break;
+            case "BorderStyle":
+              setprop((props) => (props.borderStyle= finalValue));
+              break;
+            
+            default:
+              console.log(finalValue);
+          }
         }}
       >
         {
@@ -54,7 +59,6 @@ const SelectTag = ({ setprop, id}) => {
             })
           })
         }
-        
       </select>
       
     </>
