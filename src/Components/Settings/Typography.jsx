@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,memo} from 'react'
 import { FormControl } from '@mui/material';
 import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
@@ -107,4 +107,4 @@ const Typography = ({setprop}) => {
     </div>
   )
 }
-export default Typography
+export default memo(Typography)

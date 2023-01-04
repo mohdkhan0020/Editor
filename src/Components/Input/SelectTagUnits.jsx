@@ -3,7 +3,7 @@ import {data} from '../../data'
 
 const SelectTagUnits = ({ units, setProp, id, value, defaultvalue,setcssvalue }) => {
   let x = data.filter((x)=>x.id===id)
- 
+
   return (
     <>
       <select
@@ -11,83 +11,96 @@ const SelectTagUnits = ({ units, setProp, id, value, defaultvalue,setcssvalue })
         onChange={(event) => {
           setcssvalue(value)
           units(`${event.target.value}`);
-          setProp((props) => {
-            if (id === "Bottom") {
-              return (props.bottom = `${value}${event.target.value}`);
-            }
-            if (id === "Right") {
-              return (props.right = `${value}${event.target.value}`);
-            }
-            if (id === "Left") {
-              return (props.left = `${value}${event.target.value}`);
-            }
-            if (id === "Top") {
-              return (props.top = `${value}${event.target.value}`);
-            }
-            if (id === "FontSize") {
-              return (props.fontSize = `${value}${event.target.value}`);
-            }
-            if (id === "LetterSpacing") {
-              return (props.fontSize = `${value}${event.target.value}`);
-            }
-            if (id === "LineHeight") {
-              return (props.lineHeight = `${value}${event.target.value}`);
-            }
-            if (id === "FlexBasis") {
-              return (props.flexBasis = `${value}${event.target.value}`);
-            }
-            if (id === "Width") {
-              return (props.width = `${value}${event.target.value}`);
-            }
-            if (id === "MaxWidth") {
-              return (props.maxWidth = `${value}${event.target.value}`);
-            }
-            if (id === "Height") {
-              return (props.height = `${value}${event.target.value}`);
-            }
-            if (id === "MinHeight") {
-              return (props.minHeight = `${value}${event.target.value}`);
-            }
-            if (id === "MarginTop") {
-              return (props.marginTop = `${value}${event.target.value}`);
-            }
-            if (id === "MarginBottom") {
-              return (props.marginBottom = `${value}${event.target.value}`);
-            }
-            if (id === "MarginLeft") {
-              return (props.marginLeft = `${value}${event.target.value}`);
-            }
-            if (id === "MarginRight") {
-              return (props.marginRight = `${value}${event.target.value}`);
-            }
-            if (id === "PaddingTop") {
-              return (props.paddingTop = `${value}${event.target.value}`);
-            }
-            if (id === "PaddingBottom") {
-              return (props.paddingBottom = `${value}${event.target.value}`);
-            }
-            if (id === "PaddingLeft") {
-              return (props.paddingLeft = `${value}${event.target.value}`);
-            }
-            if (id === "PaddingRight") {
-              return (props.paddingRight = `${value}${event.target.value}`);
-            }
-            if (id === "BorderRadiusTopLeft") {
-              return (props.borderTopLeftRadius = `${value}${event.target.value}`);
-            }
-            if (id === "BorderRadiusTopRight") {
-              return (props.borderTopRightRadius = `${value}${event.target.value}`);
-            }
-            if (id === "BorderRadiusBottomLeft") {
-              return (props.borderBottomLeftRadius = `${value}${event.target.value}`);
-            }
-            if (id === "BorderRadiusBottomRight") {
-              return (props.borderBottomRightRadius = `${value}${event.target.value}`);
-            }
-            if (id === "BorderWidth") {
-              return (props.borderWidth = `${value}${event.target.value}`);
-            }
-          });
+          let finalValue = `${value}${event.target.value}`;
+          switch (id) {
+            case "Top":
+              setProp((props) => props.top = finalValue);
+              break;
+            case "Bottom":
+              setProp((props) => props.bottom = finalValue);
+              break;
+            case "Right":
+              setProp((props) => props.right = finalValue);
+              break;
+            case "Left":
+              setProp((props) => (props.left =finalValue));
+              break;
+            case "FontSize":
+              setProp((props) => (props.fontSize = finalValue));
+              break;
+            case "LetterSpacing":
+              setProp((props) => (props.letterSpacing = finalValue));
+              break;
+            case "LineHeight":
+              setProp((props) => (props.lineHeight = finalValue));
+              break;
+            case "FlexBasis":
+              setProp((props) => (props.flexBasis = finalValue));
+              break;
+            case "Width":
+              setProp((props) => (props.width = finalValue));
+              break;
+            case "MaxWidth":
+              setProp((props) => (props.maxWidth = finalValue));
+              break;
+            case "Height":
+              setProp((props) => (props.height = finalValue));
+              break;
+            case "MinHeight":
+              setProp((props) => (props.minHeight = finalValue));
+              break;
+            case "MarginTop":
+              setProp((props) => (props.marginTop = finalValue));
+              break;
+            case "MarginBottom":
+              setProp((props) => (props.marginBottom = finalValue));
+              break;
+            case "MarginLeft":
+              setProp((props) => (props.marginLeft = finalValue));
+              break;
+            case "MarginRight":
+              setProp((props) => (props.marginRight = finalValue));
+              break;
+            case "PaddingTop":
+              setProp((props) => (props.paddingTop = finalValue));
+              break;
+            case "PaddingBottom":
+              setProp((props) => (props.paddingBottom = finalValue));
+              break;
+    
+            case "PaddingLeft":
+              setProp((props) => (props.paddingLeft = finalValue));
+              break;
+            case "PaddingRight":
+              setProp((props) => (props.paddingRight = finalValue));
+              break;
+            case "BorderRadiusTopLeft":
+              setProp(
+                (props) => (props.borderTopLeftRadius = finalValue)
+              );
+              break;
+            case "BorderRadiusTopRight":
+              setProp(
+                (props) => (props.borderTopRightRadius = finalValue)
+              );
+              break;
+            case "BorderRadiusBottomLeft":
+              setProp(
+                (props) => (props.borderBottomLeftRadius = finalValue)
+              );
+              break;
+            case "BorderRadiusBottomRight":
+              setProp(
+                (props) =>
+                  (props.borderBottomRightRadius = finalValue)
+              );
+              break;
+            case "BorderWidth":
+              setProp((props) => (props.borderWidth = finalValue));
+              break;
+            default:
+              console.log(finalValue);
+          }
         }}
       >
         {

@@ -1,6 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState,memo} from 'react'
 import {FormControl } from "@mui/material";
-import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
 import SelectTagUnits from '../Input/SelectTagUnits';
 
@@ -313,4 +312,4 @@ const Dimension = ({setprop}) => {
   )
 }
 
-export default Dimension
+export default memo(Dimension)

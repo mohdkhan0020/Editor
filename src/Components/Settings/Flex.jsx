@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,memo} from 'react'
 import { FormControl } from '@mui/material';
 import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
@@ -122,4 +122,4 @@ const Flex = ({setprop}) => {
        </>
   )
 }
-export default Flex
+export default memo(Flex)

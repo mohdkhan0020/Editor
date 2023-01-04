@@ -135,49 +135,12 @@ export const Text = ({
     </div>
   );
 };
+memo(Text)
 
 const TextSettings = () => {
   const {
     actions: { setProp },
     color,
-    // fontSize,
-    // textAlign,
-    // float,
-    // fontFamily,
-    // display,
-    // position,
-    // top,
-    // right,
-    // bottom,
-    // left,
-    // width,
-    // height,
-    // maxWidth,
-    // minHeight,
-    // marginTop,
-    // marginLeft,
-    // marginRight,
-    // marginBottom,
-    // paddingTop,
-    // paddingLeft,
-    // paddingRight,
-    // paddingBottom,
-    // fontWeight,
-    // letterSpacing,
-    // lineHeight,
-    // opacity,
-    // borderTopRightRadius,
-    // borderTopLeftRadius,
-    // borderBottomRightRadius,
-    // borderBottomLeftRadius,
-    // border,
-    // flexDirection,
-    // justifyContent,
-    // alignItems,
-    // alignSelf,
-    // flexGrow,
-    // flexShrink,
-    // flexBasis
   } = useNode((node) => ({
     fontSize: node.data.props.fontSize,
   }));
@@ -185,15 +148,16 @@ const TextSettings = () => {
   return (
     <>
       <FormControl size="small" component="fieldset">
-        <Typography setprop={setProp} color={color} /> 
         <General setprop={setProp} color={color} />
-        <Flex setprop={setProp}/>
-        <Decorations setprop={setProp} color={color} />
         <Dimension setprop={setProp} color={color} />
+        <Typography setprop={setProp} /> 
+        <Decorations setprop={setProp} color={color} />
+        <Flex setprop={setProp}/>
       </FormControl>
     </>
   );
 };
+memo(TextSettings)
 
 Text.craft = {
   props: {
@@ -207,4 +171,3 @@ Text.craft = {
     settings: TextSettings,
   },
 };
-// export default memo(Text);

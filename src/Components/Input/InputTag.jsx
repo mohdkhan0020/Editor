@@ -1,14 +1,17 @@
-import React from "react";
-
+import React, { useCallback, memo } from "react";
 const InputTag = ({ id, setprop, setcssvalue, setcssunits, value }) => {
   let search = (e) => {
     if (e.key === "Enter") {
       let str = e.target.value;
+      let finalValue = "";
       var cssvalue = str.replace(/\D/g, "");
       var cssunits = str.replace(/[^a-z]/gi, "");
       let x = str.split(cssvalue);
       if (x[1] === "%") {
         cssunits = x[1];
+      }
+      if (!cssunits) {
+        cssunits = `px`;
       }
       if (isNaN(cssunits)) {
         setcssvalue(cssvalue);
@@ -19,130 +22,105 @@ const InputTag = ({ id, setprop, setcssvalue, setcssunits, value }) => {
           setcssunits(str);
         }
       }
-      if (id === "Top") {
-        setprop((props) => {
-          return (props.top = `${cssvalue}${cssunits}`);
-        });
+      switch (str) {
+        case "auto":
+          finalValue = "auto";
+          break;
+        case "inherit":
+          finalValue = "inherit";
+          break;
+        case "initial":
+          finalValue = "initial";
+          break;
+        case "revert":
+          finalValue = "revert";
+          break;
+        case "unset":
+          finalValue = "unset";
+          break;
+        default:
+          finalValue = `${cssvalue}${cssunits}`;
+          console.log(finalValue);
       }
-      if (id === "Bottom") {
-        setprop((props) => {
-          return (props.bottom = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "Right") {
-        setprop((props) => {
-          return (props.right = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "Left") {
-        setprop((props) => {
-          return (props.left = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "FontSize") {
-        setprop((props) => {
-          return (props.fontSize = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "LetterSpacing") {
-        setprop((props) => {
-          return (props.letterSpacing = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "LineHeight") {
-        setprop((props) => {
-          return (props.lineHeight = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "FlexBasis") {
-        setprop((props) => {
-          return (props.flexBasis = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "Width") {
-        setprop((props) => {
-          return (props.width = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "MaxWidth") {
-        setprop((props) => {
-          return (props.maxWidth = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "Height") {
-        setprop((props) => {
-          return (props.height = `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "MinHeight") {
-        setprop((props) => {
-          return (props.minHeight= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "MarginTop") {
-        setprop((props) => {
-          return (props.marginTop= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "MarginBottom") {
-        setprop((props) => {
-          return (props.marginBottom= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "MarginLeft") {
-        setprop((props) => {
-          return (props.marginLeft= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "MarginRight") {
-        setprop((props) => {
-          return (props.marginRight= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "PaddingTop") {
-        setprop((props) => {
-          return (props.paddingTop= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "PaddingBottom") {
-        setprop((props) => {
-          return (props.paddingBottom= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "PaddingLeft") {
-        setprop((props) => {
-          return (props.paddingLeft= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "PaddingRight") {
-        setprop((props) => {
-          return (props.paddingRight= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "BorderRadiusTopLeft") {
-        setprop((props) => {
-          return (props.borderTopLeftRadius= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "BorderRadiusTopRight") {
-        setprop((props) => {
-          return (props.borderTopRightRadius= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "BorderRadiusBottomLeft") {
-        setprop((props) => {
-          return (props.borderBottomLeftRadius= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "BorderRadiusBottomRight") {
-        setprop((props) => {
-          return (props.borderBottomRightRadius= `${cssvalue}${cssunits}`);
-        });
-      }
-      if (id === "BorderWidth") {
-        setprop((props) => {
-          return (props.borderWidth= `${cssvalue}${cssunits}`);
-        });
+      switch (id) {
+        case "Top":
+          setprop((props) => (props.top = finalValue));
+          break;
+        case "Bottom":
+          setprop((props) => (props.bottom = finalValue));
+          break;
+        case "Right":
+          setprop((props) => (props.right = finalValue));
+          break;
+        case "Left":
+          setprop((props) => (props.left = finalValue));
+          break;
+        case "FontSize":
+          setprop((props) => (props.fontSize = finalValue));
+          break;
+        case "LetterSpacing":
+          setprop((props) => (props.letterSpacing = finalValue));
+          break;
+        case "LineHeight":
+          setprop((props) => (props.lineHeight = finalValue));
+          break;
+        case "FlexBasis":
+          setprop((props) => (props.flexBasis = finalValue));
+          break;
+        case "Width":
+          setprop((props) => (props.width = finalValue));
+          break;
+        case "MaxWidth":
+          setprop((props) => (props.maxWidth = finalValue));
+          break;
+        case "Height":
+          setprop((props) => (props.height = finalValue));
+          break;
+        case "MinHeight":
+          setprop((props) => (props.minHeight = finalValue));
+          break;
+        case "MarginTop":
+          setprop((props) => (props.marginTop = finalValue));
+          break;
+        case "MarginBottom":
+          setprop((props) => (props.marginBottom = finalValue));
+          break;
+        case "MarginLeft":
+          setprop((props) => (props.marginLeft = finalValue));
+          break;
+        case "MarginRight":
+          setprop((props) => (props.marginRight = finalValue));
+          break;
+        case "PaddingTop":
+          setprop((props) => (props.paddingTop = finalValue));
+          break;
+        case "PaddingBottom":
+          setprop((props) => (props.paddingBottom = finalValue));
+          break;
+
+        case "PaddingLeft":
+          setprop((props) => (props.paddingLeft = finalValue));
+          break;
+        case "PaddingRight":
+          setprop((props) => (props.paddingRight = finalValue));
+          break;
+        case "BorderRadiusTopLeft":
+          setprop((props) => (props.borderTopLeftRadius = finalValue));
+          break;
+        case "BorderRadiusTopRight":
+          setprop((props) => (props.borderTopRightRadius = finalValue));
+          break;
+        case "BorderRadiusBottomLeft":
+          setprop((props) => (props.borderBottomLeftRadius = finalValue));
+          break;
+        case "BorderRadiusBottomRight":
+          setprop((props) => (props.borderBottomRightRadius = finalValue));
+          break;
+        case "BorderWidth":
+          setprop((props) => (props.borderWidth = finalValue));
+          break;
+        default:
+          console.log(finalValue);
       }
     }
   };
@@ -153,10 +131,13 @@ const InputTag = ({ id, setprop, setcssvalue, setcssunits, value }) => {
         onChange={(e) => {
           setcssvalue(e.target.value);
         }}
-        onKeyDown={(e) => search(e)}
+        onKeyDown={useCallback((e) => {
+          search(e);
+        }, [])}
+        style={{ width: `100px` }}
       ></input>
     </>
   );
 };
 
-export default InputTag;
+export default memo(InputTag);

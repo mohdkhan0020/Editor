@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { FormControl, Slider } from "@mui/material";
 import { memo } from "react";
-import options from "../User/Data";
-
 import SelectTag from '../Input/SelectTag';
 import InputTag from '../Input/InputTag';
 import SelectTagUnits from '../Input/SelectTagUnits';
