@@ -7,13 +7,11 @@ import {
   Grid,
   Typography,
   Button as MaterialButton,
-  FormControl,
-  FormLabel,
-  Slider,
 } from "@mui/material";
 import { useEditor } from "@craftjs/core";
 
 export const SettingsPanel = () => {
+  // debugger;
   const { actions, selected } = useEditor((state, query) => {
     const [currentNodeId] = state.events.selected;
     let selected;
@@ -49,7 +47,7 @@ export const SettingsPanel = () => {
           </Box>
         </Grid>
         {selected.settings && React.createElement(selected.settings)}
-       
+
         {selected.isDeletable ? (
           <MaterialButton
             variant="contained"

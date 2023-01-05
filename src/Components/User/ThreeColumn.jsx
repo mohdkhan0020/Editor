@@ -121,6 +121,7 @@ export const ThreeColumn = ({ background, padding }) => {
       padding={padding}
       height={`75px`}
       className="kkkkk"
+      text=""
     >
       <Element id="threeColumn" is={ThreeColumnChild} canvas></Element>
     </Container>
