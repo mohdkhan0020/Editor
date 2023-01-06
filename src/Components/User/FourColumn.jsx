@@ -52,7 +52,6 @@ export const FourColumnChild = ({
     connectors: { connect, drag },
   } = useNode();
 
-  console.log("children =", children);
   return (
     <>
       <div style={{ display: "flex", width: "75.5%" }}>

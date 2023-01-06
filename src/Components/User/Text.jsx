@@ -3,22 +3,21 @@ import { memo } from "react";
 import { useEffect, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { useNode } from "@craftjs/core";
-import { FormControl } from "@mui/material";
+import { FormControl} from "@mui/material";
 import General from "../Settings/General";
 import Decorations from "../Settings/Decorations";
 import Dimension from "../Settings/Dimension";
 import Typography from "../Settings/Typography";
-import Flex from "../Settings/Flex";
 // import { SketchPicker } from "react-color";
 // import Dimension from "../Settings/Dimension";
 // import Decorations from "../Settings/Decorations";
+import Flex from "../Settings/Flex";
 
 export const Text = ({
   text,
   children,
   fontSize,
   textAlign,
-  background,
   color,
   fontFamily,
   position,
@@ -60,6 +59,7 @@ export const Text = ({
   flexBasis,
   borderStyle,
   borderWidth,
+  background
 }) => {
   const {
     connectors: { connect, drag },
@@ -95,7 +95,6 @@ export const Text = ({
           textAlign,
           color,
           float,
-          background,
           fontFamily,
           top,
           position,
@@ -132,6 +131,7 @@ export const Text = ({
           flexBasis,
           borderStyle,
           borderWidth,
+          background
         }}
       />
     </div>
@@ -140,12 +140,73 @@ export const Text = ({
 memo(Text);
 
 const TextSettings = () => {
+  const [styles, setstyles] = useState(null);
+  const [element, setelement] = useState(null);
   const {
     actions: { setProp },
     color,
-  } = useNode((node) => ({
-    fontSize: node.data.props.fontSize,
-  }));
+  } = useNode((node) => {
+    setelement(getComputedStyle(node.dom.firstChild));
+    return {
+      fontSize: node.data.props.fontSize,
+    };
+  });
+
+  function getCustomcss(element) {
+    let a = [
+      "display",
+      "font-size",
+      "text-align",
+      "color",
+      "float",
+      "font-family",
+      "top",
+      "position",
+      "bottom",
+      "left",
+      "right",
+      "height",
+      "width",
+      "max-width",
+      "min-height",
+      "margin-top",
+      "margin-left",
+      "margin-right",
+      "margin-bottom",
+      "padding-top",
+      "padding-left",
+      "padding-right",
+      "padding-bottom",
+      "font-weight",
+      "letter-spacing",
+      "line-height",
+      "opacity",
+      "border-top-left-radius",
+      "border-top-right-radius",
+      "border-bottom-right-radius",
+      "border-bottom-left-radius",
+      "border",
+      "flex-direction",
+      "justify-content",
+      "align-items",
+      "align-self",
+      "flex-grow",
+      "flex-shrink",
+      "flex-basis",
+      "border-style",
+      "border-width",
+    ];
+    var css_data = {};
+    for (var i = 0; i < a.length; i++) {
+      css_data[a[i]] = element.getPropertyValue(a[i]);
+    }
+    return css_data
+  }
+
+  useEffect(() => {
+    setstyles(getCustomcss(element))
+  }, [element]);
+  console.log(styles);
 
   return (
     <>
