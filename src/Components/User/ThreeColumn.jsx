@@ -66,7 +66,7 @@ export const ThreeColumnChild = ({
           {children}
           <Element
             height="77px"
-            id="threecolumn1"
+            id="threeColumn1"
             is={Container}
             canvas
           ></Element>
@@ -85,7 +85,7 @@ export const ThreeColumnChild = ({
           {children}
           <Element
             height="77px"
-            id="threecolumn2"
+            id="threeColumn2"
             is={Container}
             canvas
           ></Element>
@@ -104,7 +104,7 @@ export const ThreeColumnChild = ({
           {children}
           <Element
             height="77px"
-            id="threecolumn3"
+            id="threeColumn3"
             is={Container}
             canvas
           ></Element>

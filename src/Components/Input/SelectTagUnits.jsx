@@ -1,101 +1,99 @@
 import React from "react";
-import {data} from '../../data'
+import { data } from "../../data";
 
-const SelectTagUnits = ({ units, setProp, id, value, defaultvalue,setcssvalue }) => {
-  let x = data.filter((x)=>x.id===id)
+const SelectTagUnits = ({
+  units,
+  setProp,
+  id,
+  value,
+  defaultValue,
+  setCssValue,
+}) => {
+  let x = data.filter((x) => x.id === id);
 
   return (
     <>
       <select
-        value={defaultvalue}
+        value={defaultValue}
         onChange={(event) => {
-          setcssvalue(value)
+          setCssValue(value);
           units(`${event.target.value}`);
           let finalValue = `${value}${event.target.value}`;
           switch (id) {
             case "Top":
-              setProp((props) => props.top = finalValue);
+              setProp((props) => (props.top = finalValue));
               break;
             case "Bottom":
-              setProp((props) => props.bottom = finalValue);
+              setProp((props) => (props.bottom = finalValue));
               break;
             case "Right":
-              setProp((props) => props.right = finalValue);
+              setProp((props) => (props.right = finalValue));
               break;
             case "Left":
-              setProp((props) => (props.left =finalValue));
+              setProp((props) => (props.left = finalValue));
               break;
-            case "FontSize":
+            case "fontSize":
               setProp((props) => (props.fontSize = finalValue));
               break;
-            case "LetterSpacing":
+            case "letterSpacing":
               setProp((props) => (props.letterSpacing = finalValue));
               break;
-            case "LineHeight":
+            case "lineHeight":
               setProp((props) => (props.lineHeight = finalValue));
               break;
-            case "FlexBasis":
+            case "flexBasis":
               setProp((props) => (props.flexBasis = finalValue));
               break;
             case "Width":
               setProp((props) => (props.width = finalValue));
               break;
-            case "MaxWidth":
+            case "maxWidth":
               setProp((props) => (props.maxWidth = finalValue));
               break;
             case "Height":
               setProp((props) => (props.height = finalValue));
               break;
-            case "MinHeight":
+            case "minHeight":
               setProp((props) => (props.minHeight = finalValue));
               break;
-            case "MarginTop":
+            case "marginTop":
               setProp((props) => (props.marginTop = finalValue));
               break;
-            case "MarginBottom":
+            case "marginBottom":
               setProp((props) => (props.marginBottom = finalValue));
               break;
-            case "MarginLeft":
+            case "marginLeft":
               setProp((props) => (props.marginLeft = finalValue));
               break;
-            case "MarginRight":
+            case "marginRight":
               setProp((props) => (props.marginRight = finalValue));
               break;
-            case "PaddingTop":
+            case "paddingTop":
               setProp((props) => (props.paddingTop = finalValue));
               break;
-            case "PaddingBottom":
+            case "paddingBottom":
               setProp((props) => (props.paddingBottom = finalValue));
               break;
-    
-            case "PaddingLeft":
+
+            case "paddingLeft":
               setProp((props) => (props.paddingLeft = finalValue));
               break;
-            case "PaddingRight":
+            case "paddingRight":
               setProp((props) => (props.paddingRight = finalValue));
               break;
-            case "BorderRadiusTopLeft":
-              setProp(
-                (props) => (props.borderTopLeftRadius = finalValue)
-              );
+            case "borderRadiusTopLeft":
+              setProp((props) => (props.borderTopLeftRadius = finalValue));
               break;
-            case "BorderRadiusTopRight":
-              setProp(
-                (props) => (props.borderTopRightRadius = finalValue)
-              );
+            case "borderRadiusTopRight":
+              setProp((props) => (props.borderTopRightRadius = finalValue));
               break;
-            case "BorderRadiusBottomLeft":
-              setProp(
-                (props) => (props.borderBottomLeftRadius = finalValue)
-              );
+            case "borderRadiusBottomLeft":
+              setProp((props) => (props.borderBottomLeftRadius = finalValue));
               break;
-            case "BorderRadiusBottomRight":
-              setProp(
-                (props) =>
-                  (props.borderBottomRightRadius = finalValue)
-              );
+            case "borderRadiusBottomRight":
+              setProp((props) => (props.borderBottomRightRadius = finalValue));
               break;
-            case "BorderWidth":
+            case "borderWidth":
               setProp((props) => (props.borderWidth = finalValue));
               break;
             default:
@@ -103,17 +101,18 @@ const SelectTagUnits = ({ units, setProp, id, value, defaultvalue,setcssvalue })
           }
         }}
       >
-        {
-          x.map((item)=>{
-            return item.values.map((z,i)=>{
-              return<option key={i} value={z.units}>{z.name}</option>
-            })
-          })
-        }
-        
+        {x.map((item) => {
+          return item.values.map((z, i) => {
+            return (
+              <option key={i} value={z.units}>
+                {z.name}
+              </option>
+            );
+          });
+        })}
       </select>
     </>
   );
-}
+};
 
 export default SelectTagUnits;

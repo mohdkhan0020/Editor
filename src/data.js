@@ -1,7 +1,7 @@
-const sameunits = [
-  //   { units: "auto", name: "auto" },
-  //   { units: "initial", name: "initial" },
-  //   { units: "inherit", name: "inherit" },
+const sameUnits = [
+  { units: "auto", name: "auto" },
+  { units: "initial", name: "initial" },
+  { units: "inherit", name: "inherit" },
 
   { units: "", name: "--" },
   { units: "px", name: "px" },
@@ -12,38 +12,38 @@ const sameunits = [
 ];
 export let data = [
   {
-    id: "FlexContainer",
+    id: "flexContainer",
     values: [
       { units: "block", name: "Disable" },
       { units: "flex", name: "Enable" },
     ],
   },
-  { id: "Top", values: sameunits },
-  { id: "Bottom", values: sameunits },
-  { id: "Left", values: sameunits },
-  { id: "Right", values: sameunits },
-  { id: "Width", values: sameunits },
-  { id: "Height", values: sameunits },
-  { id: "MaxWidth", values: sameunits },
-  { id: "MinHeight", values: sameunits },
-  { id: "MarginTop", values: sameunits },
-  { id: "MarginBottom", values: sameunits },
-  { id: "MarginRight", values: sameunits },
-  { id: "MarginLeft", values: sameunits },
-  { id: "PaddingRight", values: sameunits },
-  { id: "PaddingLeft", values: sameunits },
-  { id: "PaddingTop", values: sameunits },
-  { id: "PaddingBottom", values: sameunits },
-  { id: "BorderWidth", values: sameunits },
-  { id: "BorderRadiusTopLeft", values: sameunits },
-  { id: "BorderRadiusTopRight", values: sameunits },
-  { id: "BorderRadiusBottomLeft", values: sameunits },
-  { id: "BorderRadiusBottomRight", values: sameunits },
-  { id: "FontSize", values: sameunits },
-  { id: "LetterSpacing", values: sameunits },
-  { id: "LineHeight", values: sameunits },
+  { id: "Top", values: sameUnits },
+  { id: "Bottom", values: sameUnits },
+  { id: "Left", values: sameUnits },
+  { id: "Right", values: sameUnits },
+  { id: "Width", values: sameUnits },
+  { id: "Height", values: sameUnits },
+  { id: "maxWidth", values: sameUnits },
+  { id: "minHeight", values: sameUnits },
+  { id: "marginTop", values: sameUnits },
+  { id: "marginBottom", values: sameUnits },
+  { id: "marginRight", values: sameUnits },
+  { id: "marginLeft", values: sameUnits },
+  { id: "paddingRight", values: sameUnits },
+  { id: "paddingLeft", values: sameUnits },
+  { id: "paddingTop", values: sameUnits },
+  { id: "paddingBottom", values: sameUnits },
+  { id: "borderWidth", values: sameUnits },
+  { id: "borderRadiusTopLeft", values: sameUnits },
+  { id: "borderRadiusTopRight", values: sameUnits },
+  { id: "borderRadiusBottomLeft", values: sameUnits },
+  { id: "borderRadiusBottomRight", values: sameUnits },
+  { id: "fontSize", values: sameUnits },
+  { id: "letterSpacing", values: sameUnits },
+  { id: "lineHeight", values: sameUnits },
   {
-    id: "FontWeight",
+    id: "fontWeight",
     values: [
       { units: 100, name: "Thin" },
       { units: 200, name: "Extra Light" },
@@ -56,7 +56,7 @@ export let data = [
       { units: 900, name: "Ultra Bold" },
     ],
   },
-  { id: "FlexBasis", values: sameunits },
+  { id: "flexBasis", values: sameUnits },
   {
     id: "Float",
     values: [
@@ -78,7 +78,7 @@ export let data = [
     ],
   },
   {
-    id: "FlexDirection",
+    id: "flexDirection",
     values: [
       { units: "row", name: "row" },
       { units: "row-reverse", name: "row-reverse" },
@@ -87,7 +87,7 @@ export let data = [
     ],
   },
   {
-    id: "JustifyContent",
+    id: "justifyContent",
     values: [
       { units: "flex-start", name: "flex-start" },
       { units: "flex-end", name: "flex-end" },
@@ -96,7 +96,7 @@ export let data = [
     ],
   },
   {
-    id: "AlignItems",
+    id: "alignItems",
     values: [
       { units: "flex-start", name: "flex-start" },
       { units: "flex-end", name: "flex-end" },
@@ -105,7 +105,7 @@ export let data = [
     ],
   },
   {
-    id: "AlignSelf",
+    id: "alignSelf",
     values: [
       { units: "flex-start", name: "flex-start" },
       { units: "flex-end", name: "flex-end" },
@@ -114,7 +114,7 @@ export let data = [
     ],
   },
   {
-    id: "TextAlign",
+    id: "textAlign",
     values: [
       { units: "left", name: "Left" },
       { units: "right", name: "Right" },
@@ -134,7 +134,7 @@ export let data = [
     ],
   },
   {
-    id: "BorderStyle",
+    id: "borderStyle",
     values: [
       { units: "none", name: "none" },
       { units: "solid", name: "solid" },
@@ -148,7 +148,7 @@ export let data = [
     ],
   },
   {
-    id: "FontFamily",
+    id: "fontFamily",
     values: [
       { units: "Arial", name: "Arial" },
       { units: "Arial Black", name: "Arial Black" },

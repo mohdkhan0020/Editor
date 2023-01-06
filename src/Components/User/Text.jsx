@@ -3,21 +3,22 @@ import { memo } from "react";
 import { useEffect, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { useNode } from "@craftjs/core";
-import { FormControl} from "@mui/material";
+import { FormControl } from "@mui/material";
 import General from "../Settings/General";
 import Decorations from "../Settings/Decorations";
 import Dimension from "../Settings/Dimension";
 import Typography from "../Settings/Typography";
+import Flex from "../Settings/Flex";
 // import { SketchPicker } from "react-color";
 // import Dimension from "../Settings/Dimension";
 // import Decorations from "../Settings/Decorations";
-import Flex from "../Settings/Flex";
 
 export const Text = ({
   text,
   children,
   fontSize,
   textAlign,
+  background,
   color,
   fontFamily,
   position,
@@ -58,7 +59,7 @@ export const Text = ({
   flexShrink,
   flexBasis,
   borderStyle,
-  borderWidth
+  borderWidth,
 }) => {
   const {
     connectors: { connect, drag },
@@ -94,6 +95,7 @@ export const Text = ({
           textAlign,
           color,
           float,
+          background,
           fontFamily,
           top,
           position,
@@ -129,13 +131,13 @@ export const Text = ({
           flexShrink,
           flexBasis,
           borderStyle,
-          borderWidth
+          borderWidth,
         }}
       />
     </div>
   );
 };
-memo(Text)
+memo(Text);
 
 const TextSettings = () => {
   const {
@@ -150,14 +152,14 @@ const TextSettings = () => {
       <FormControl size="small" component="fieldset">
         <General setprop={setProp} color={color} />
         <Dimension setprop={setProp} color={color} />
-        <Typography setprop={setProp} /> 
+        <Typography setprop={setProp} />
         <Decorations setprop={setProp} color={color} />
-        <Flex setprop={setProp}/>
+        <Flex setprop={setProp} />
       </FormControl>
     </>
   );
 };
-memo(TextSettings)
+memo(TextSettings);
 
 Text.craft = {
   props: {

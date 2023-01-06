@@ -3,7 +3,13 @@ import React from "react";
 import { useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { useNode } from "@craftjs/core";
-import { Paper, FormControl, FormLabel, Slider } from "@mui/material";
+import {
+  Paper,
+  FormControl,
+  FormLabel,
+  Slider,
+  Button as MaterialButton,
+} from "@mui/material";
 import { SketchPicker } from "react-color";
 import General from "../Settings/General";
 import Dimension from "../Settings/Dimension";
@@ -64,8 +70,7 @@ export const Container = ({
     connectors: { connect, drag },
     actions: { setProp },
   } = useNode();
-
-  console.log("children = =", children, "text = = ", text);
+  // console.log("children = =", children, "text = = ", text);
   // const {
   //   connectors: { connect, drag },
   // } = useNode();
@@ -74,7 +79,7 @@ export const Container = ({
       onClick={(e) => setEditable(true)}
       ref={(ref) => connect(drag(ref))}
       style={{
-        text,
+        text: "",
         display,
         fontSize,
         textAlign,
@@ -119,6 +124,8 @@ export const Container = ({
       {children}
 
       <ContentEditable
+        // value="text"
+        // name="editableContainer"
         disabled={!editable}
         html={text}
         onChange={(e) =>
@@ -145,12 +152,6 @@ export const ContainerSettings = () => {
 
   return (
     <>
-      {/* <FormControl fullWidth={true} margin="normal" component="fieldset"> */}
-      {/* <General setProp={setProp} color={color} />
-        <Dimension setProp={setProp} />
-        <Typography setProp={setProp} />
-        <Decorations setProp={setProp} />
-        <Flex setProp={setProp} /> */}
       <FormControl size="small" component="fieldset">
         <General setprop={setProp} color={color} />
         <Dimension setprop={setProp} color={color} />

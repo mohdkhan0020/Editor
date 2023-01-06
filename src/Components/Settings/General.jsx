@@ -6,21 +6,23 @@ import SelectTagUnits from "../Input/SelectTagUnits";
 import SelectTag from "../Input/SelectTag";
 import InputTag from "../Input/InputTag";
 
-const General = ({ setprop, color }) => {
-  const [topcssvalue, settopcssvalue] = useState('');
-  const [topcssunits, settopcssunits] = useState('');
+const General = ({ setprop, background, color }) => {
+  const [topCssValue, setTopCssValue] = useState("");
+  const [topCssUnits, setTopCssUnits] = useState("");
 
-  const [bottomcssvalue, setbottomcssvalue] = useState('');
-  const [bottomcssunits, setbottomcssunits] = useState('');
+  const [bottomCssValue, setBottomCssValue] = useState("");
+  const [bottomCssUnits, setBottomCssUnits] = useState("");
 
-  const [leftcssvalue, setleftcssvalue] = useState('');
-  const [leftcssunits, setleftcssunits] = useState('');
+  const [leftCssValue, setLeftCssValue] = useState("");
+  const [leftCssUnits, setLeftCssUnits] = useState("");
 
-  const [rightcssvalue, setrightcssvalue] = useState('');
-  const [rightcssunits, setrightcssunits] = useState('');
+  const [rightCssValue, setRightCssValue] = useState("");
+  const [rightCssUnits, setRightCssUnits] = useState("");
   return (
     <div>
       <h1>General</h1>
+      <br />
+      <h3>Color</h3>
 
       <SketchPicker
         color={color || "#000"}
@@ -28,14 +30,24 @@ const General = ({ setprop, color }) => {
           setprop((props) => (props.color = color.hex));
         }}
       />
+      {/* <h2>background-color</h2> */}
+      <br />
+      <br />
+      <h3>Background-Color</h3>
+      <SketchPicker
+        color={color || "#000"}
+        onChangeComplete={(color) => {
+          setprop((props) => (props.background = color.hex));
+        }}
+      />
 
       <FormControl>
-        <label htmlFor="textalign">Float</label>
+        <label htmlFor="textAlign">Float</label>
         <SelectTag id={"Float"} setprop={setprop} />
       </FormControl>
       <div style={{ display: "flex" }}>
         <FormControl>
-          <label htmlFor="textalign">Display</label>
+          <label htmlFor="textAlign">Display</label>
           <div style={{ display: "flex" }}>
             <SelectTag id={"Display"} setprop={setprop} />
           </div>
@@ -54,19 +66,19 @@ const General = ({ setprop, color }) => {
           <div>
             <InputTag
               id={"Top"}
-              value={topcssvalue}
-              setcssvalue={settopcssvalue}
-              setcssunits={settopcssunits}
+              value={topCssValue}
+              setCssValue={setTopCssValue}
+              setCssUnits={setTopCssUnits}
               setprop={setprop}
             />
 
             <SelectTagUnits
               id={"Top"}
-              units={settopcssunits}
-              setcssvalue={settopcssvalue}
+              units={setTopCssUnits}
+              setCssValue={setTopCssValue}
               setProp={setprop}
-              value={topcssvalue}
-              defaultvalue={topcssunits}
+              value={topCssValue}
+              defaultValue={topCssUnits}
             />
           </div>
         </FormControl>
@@ -75,19 +87,19 @@ const General = ({ setprop, color }) => {
           <div style={{ display: "flex" }}>
             <InputTag
               id={"Bottom"}
-              value={bottomcssvalue}
-              setcssvalue={setbottomcssvalue}
-              setcssunits={setbottomcssunits}
+              value={bottomCssValue}
+              setCssValue={setBottomCssValue}
+              setCssUnits={setBottomCssUnits}
               setprop={setprop}
             />
 
             <SelectTagUnits
               id={"Bottom"}
-              units={setbottomcssunits}
-              setcssvalue={setbottomcssvalue}
+              units={setBottomCssUnits}
+              setCssValue={setBottomCssValue}
               setProp={setprop}
-              value={bottomcssvalue}
-              defaultvalue={bottomcssunits}
+              value={bottomCssValue}
+              defaultValue={bottomCssUnits}
             />
           </div>
         </FormControl>
@@ -99,40 +111,40 @@ const General = ({ setprop, color }) => {
           <div>
             <InputTag
               id={"Left"}
-              value={leftcssvalue}
-              setcssvalue={setleftcssvalue}
-              setcssunits={setleftcssunits}
+              value={leftCssValue}
+              setCssValue={setLeftCssValue}
+              setCssUnits={setLeftCssUnits}
               setprop={setprop}
             />
 
             <SelectTagUnits
               id={"Left"}
-              units={setleftcssunits}
-              setcssvalue={setleftcssvalue}
+              units={setLeftCssUnits}
+              setCssValue={setLeftCssValue}
               setProp={setprop}
-              value={leftcssvalue}
-              defaultvalue={leftcssunits}
+              value={leftCssValue}
+              defaultValue={leftCssUnits}
             />
           </div>
         </FormControl>
         <FormControl>
           <label htmlFor="Top">right</label>
           <div style={{}}>
-          <InputTag
+            <InputTag
               id={"Right"}
-              value={rightcssvalue}
-              setcssvalue={setrightcssvalue}
-              setcssunits={setrightcssunits}
+              value={rightCssValue}
+              setCssValue={setRightCssValue}
+              setCssUnits={setRightCssUnits}
               setprop={setprop}
             />
 
             <SelectTagUnits
               id={"Right"}
-              units={setrightcssunits}
-              setcssvalue={setrightcssvalue}
+              units={setRightCssUnits}
+              setCssValue={setRightCssValue}
               setProp={setprop}
-              value={rightcssvalue}
-              defaultvalue={rightcssunits}
+              value={rightCssValue}
+              defaultValue={rightCssUnits}
             />
           </div>
         </FormControl>

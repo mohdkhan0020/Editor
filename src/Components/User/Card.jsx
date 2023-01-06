@@ -2,12 +2,19 @@
 import React from "react";
 import { ContainerDefaultProps } from "./Container";
 import { ContainerSettings } from "./Container";
+import { FormControl } from "@mui/material";
+import General from "../Settings/General";
+import Decorations from "../Settings/Decorations";
+import Dimension from "../Settings/Dimension";
+import Typography from "../Settings/Typography";
+import Flex from "../Settings/Flex";
 import { Text } from "./Text";
 import { Button } from "./Button";
 import { Element, useNode } from "@craftjs/core";
 import { Button as MaterialButton } from "@mui/material";
-
+import { Paper } from "@mui/material";
 import { Container } from "./Container";
+import { memo } from "react";
 
 export const CardTop = ({ children }) => {
   const {
@@ -81,7 +88,7 @@ export const Card = ({
   textShadow,
 }) => {
   return (
-    <Container background={background} padding={padding}>
+    <Paper background={background} padding={padding} text="">
       <Element id="text" is={CardTop} canvas>
         <Text text="Title" fontSize={20} />
         <Text text="Subtitle" fontSize={15} />
@@ -96,14 +103,74 @@ export const Card = ({
           Button
         </Button>
       </Element>
-    </Container>
+    </Paper>
   );
 };
 
+const CardSettings = () => {
+  const {
+    actions: { setProp },
+    color,
+  } = useNode((node) => ({
+    fontSize: node.data.props.fontSize,
+  }));
+
+  return (
+    <>
+      <FormControl size="small" component="fieldset">
+        <General setprop={setProp} color={color} />
+        <Dimension setprop={setProp} color={color} />
+        <Typography setprop={setProp} />
+        <Decorations setprop={setProp} color={color} />
+        <Flex setprop={setProp} />
+      </FormControl>
+    </>
+  );
+};
+memo(CardSettings);
+
 Card.craft = {
-  props: ContainerDefaultProps,
+  props: {
+    text: "Hi",
+    fontSize: 60,
+  },
+  rules: {
+    canDrag: (node) => node.data.props.text !== "Drag",
+  },
   related: {
-    // Since Card has the same settings as Container, we'll just reuse ContainerSettings
-    settings: ContainerSettings,
+    settings: CardSettings,
   },
 };
+
+// const CardSettings = () => {
+//   const {
+//     actions: { setProp },
+//     color,
+//   } = useNode((node) => ({
+//     fontSize: node.data.props.fontSize,
+//   }));
+
+//   return (
+//     <>
+//       <FormControl size="small" component="fieldset">
+//         <General setprop={setProp} color={color} />
+//         <Dimension setprop={setProp} color={color} />
+//         <Typography setprop={setProp} />
+//         <Decorations setprop={setProp} color={color} />
+//         <Flex setprop={setProp} />
+//       </FormControl>
+//     </>
+//   );
+// };
+
+// Card.craft = {
+//   props: {
+//     ContainerDefaultProps,
+//     text: "",
+//     fontSize: 20,
+//   },
+//   related: {
+//     // Since Card has the same settings as Container, we'll just reuse ContainerSettings
+//     settings: CardSettings,
+//   },
+// };

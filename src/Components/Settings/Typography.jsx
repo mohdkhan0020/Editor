@@ -1,110 +1,110 @@
-import React,{useState,memo} from 'react'
-import { FormControl } from '@mui/material';
-import SelectTag from '../Input/SelectTag';
-import InputTag from '../Input/InputTag';
-import SelectTagUnits from '../Input/SelectTagUnits';
+import React, { useState, memo } from "react";
+import { FormControl } from "@mui/material";
+import SelectTag from "../Input/SelectTag";
+import InputTag from "../Input/InputTag";
+import SelectTagUnits from "../Input/SelectTagUnits";
 
-const Typography = ({setprop}) => {
-    const [fontsizecssvalue, setfontsizecssvalue] = useState('');
-    const [fontsizecssunits, setfontsizecssunits] = useState('');
-  
-    const [letterSpacingcssvalue, setletterSpacingcssvalue] = useState('');
-    const [letterSpacingcssunits, setletterSpacingcssunits] = useState('');
+const Typography = ({ setprop }) => {
+  const [fontSizeCssValue, setFontSizeCssValue] = useState("");
+  const [fontSizeCssUnits, setFontSizeCssUnits] = useState("");
 
-    const [lineheightcssvalue, setlineheightcssvalue] = useState('');
-    const [lineheightcssunits, setlineheightcssunits] = useState('');
+  const [letterSpacingCssValue, setLetterSpacingCssValue] = useState("");
+  const [letterSpacingCssUnits, setLetterSpacingCssUnits] = useState("");
+
+  const [lineHeightCssValue, setLineHeightCssValue] = useState("");
+  const [lineHeightCssUnits, setLineHeightCssUnits] = useState("");
   return (
     <div>
-        <h1>Typography</h1>
-        <div style={{ display: "flex" }}>
-          <FormControl>
-          <label htmlFor="FontFamily">Font Family</label>
-            <div style={{ display: "flex" }}>
-            <SelectTag id={"FontFamily"} setprop={setprop} />
-            </div>
-          </FormControl>
-          <FormControl>
+      <h1>Typography</h1>
+      <div style={{ display: "flex" }}>
+        <FormControl>
+          <label htmlFor="fontFamily">Font Family</label>
+          <div style={{ display: "flex" }}>
+            <SelectTag id={"fontFamily"} setprop={setprop} />
+          </div>
+        </FormControl>
+        <FormControl>
           <label htmlFor="Top">Font Size</label>
-            <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <InputTag
-              id={"FontSize"}
-              value={fontsizecssvalue}
-              setcssvalue={setfontsizecssvalue}
-              setcssunits={setfontsizecssunits}
+              id={"fontSize"}
+              value={fontSizeCssValue}
+              setCssValue={setFontSizeCssValue}
+              setCssUnits={setFontSizeCssUnits}
               setprop={setprop}
             />
             <SelectTagUnits
-              id={"FontSize"}
-              units={setfontsizecssunits}
-              setcssvalue={setfontsizecssvalue}
+              id={"fontSize"}
+              units={setFontSizeCssUnits}
+              setCssValue={setFontSizeCssValue}
               setProp={setprop}
-              value={fontsizecssvalue}
-              defaultvalue={fontsizecssunits}
+              value={fontSizeCssValue}
+              defaultValue={fontSizeCssUnits}
             />
-            </div>
-          </FormControl>
-        </div>
-        <FormControl>
+          </div>
+        </FormControl>
+      </div>
+      <FormControl>
         <div style={{ display: "flex" }}>
           <FormControl>
-          <label htmlFor="textalign">Font Weight</label>
+            <label htmlFor="textAlign">Font Weight</label>
             <div style={{ display: "flex" }}>
-            <SelectTag id={"FontWeight"} setprop={setprop} />
+              <SelectTag id={"fontWeight"} setprop={setprop} />
             </div>
           </FormControl>
           <FormControl>
-          <label htmlFor="Top">Letter Spacing</label>
+            <label htmlFor="Top">Letter Spacing</label>
             <div style={{ display: "flex" }}>
-            <InputTag
-              id={"LetterSpacing"}
-              value={letterSpacingcssvalue}
-              setcssvalue={setletterSpacingcssvalue}
-              setcssunits={setletterSpacingcssunits}
-              setprop={setprop}
-            />
-            <SelectTagUnits
-              id={"LetterSpacing"}
-              units={setletterSpacingcssunits}
-              setcssvalue={setletterSpacingcssvalue}
-              setProp={setprop}
-              value={letterSpacingcssvalue}
-              defaultvalue={letterSpacingcssunits}
-            />
+              <InputTag
+                id={"letterSpacing"}
+                value={letterSpacingCssValue}
+                setCssValue={setLetterSpacingCssValue}
+                setCssUnits={setLetterSpacingCssUnits}
+                setprop={setprop}
+              />
+              <SelectTagUnits
+                id={"letterSpacing"}
+                units={setLetterSpacingCssUnits}
+                setCssValue={setLetterSpacingCssValue}
+                setProp={setprop}
+                value={letterSpacingCssValue}
+                defaultValue={letterSpacingCssUnits}
+              />
             </div>
           </FormControl>
         </div>
-        </FormControl>
-        <FormControl>
+      </FormControl>
+      <FormControl>
         <div style={{ display: "flex" }}>
           <FormControl>
-          <label htmlFor="textalign">Text Align</label>
+            <label htmlFor="textAlign">Text Align</label>
             <div style={{ display: "flex" }}>
-            <SelectTag id={"TextAlign"} setprop={setprop} />
+              <SelectTag id={"textAlign"} setprop={setprop} />
             </div>
           </FormControl>
           <FormControl>
-          <label htmlFor="Top">Line Height</label>
+            <label htmlFor="Top">Line Height</label>
             <div style={{ display: "flex" }}>
-            <InputTag
-              id={"LineHeight"}
-              value={lineheightcssvalue}
-              setcssvalue={setlineheightcssvalue}
-              setcssunits={setlineheightcssunits}
-              setprop={setprop}
-            />
-            <SelectTagUnits
-              id={"LineHeight"}
-              units={setlineheightcssunits}
-              setcssvalue={setlineheightcssvalue}
-              setProp={setprop}
-              value={lineheightcssvalue}
-              defaultvalue={lineheightcssunits}
-            />
+              <InputTag
+                id={"lineHeight"}
+                value={lineHeightCssValue}
+                setCssValue={setLineHeightCssValue}
+                setCssUnits={setLineHeightCssUnits}
+                setprop={setprop}
+              />
+              <SelectTagUnits
+                id={"lineHeight"}
+                units={setLineHeightCssUnits}
+                setCssValue={setLineHeightCssValue}
+                setProp={setprop}
+                value={lineHeightCssValue}
+                defaultValue={lineHeightCssUnits}
+              />
             </div>
           </FormControl>
         </div>
-        </FormControl>
+      </FormControl>
     </div>
-  )
-}
-export default memo(Typography)
+  );
+};
+export default memo(Typography);

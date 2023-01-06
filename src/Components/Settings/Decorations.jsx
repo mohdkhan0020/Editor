@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { FormControl, Slider } from "@mui/material";
 import { memo } from "react";
-import SelectTag from '../Input/SelectTag';
-import InputTag from '../Input/InputTag';
-import SelectTagUnits from '../Input/SelectTagUnits';
+import SelectTag from "../Input/SelectTag";
+import InputTag from "../Input/InputTag";
+import SelectTagUnits from "../Input/SelectTagUnits";
 const Decorations = ({ setprop }) => {
-  const [borderwidthcssvalue, setborderwidthcssvalue] = useState('');
-  const [borderwidthcssunits, setborderwidthcssunits] = useState('');
+  const [borderWidthCssValue, setBorderWidthCssValue] = useState("");
+  const [borderWidthCssUnits, setBorderWidthCssUnits] = useState("");
 
-  const [borderradiusbottomleftcssvalue, setborderradiusbottomleftcssvalue] =
-    useState('');
-  const [borderradiusbottomleftcssunits, setborderradiusbottomleftcssunits] =
-    useState('');
+  const [borderRadiusBottomLeftCssValue, setBorderRadiusBottomLeftCssValue] =
+    useState("");
+  const [borderRadiusBottomLeftCssUnits, setBorderRadiusBottomLeftCssUnits] =
+    useState("");
 
-  const [borderradiusbottomrightcssvalue, setborderradiusbottomrightcssvalue] =
-    useState('');
-  const [borderradiusbottomrightcssunits, setborderradiusbottomrightcssunits] =
-    useState('');
+  const [borderRadiusBottomRightCssValue, setBorderRadiusBottomRightCssValue] =
+    useState("");
+  const [borderRadiusBottomRightCssUnits, setBorderRadiusBottomRightCssUnits] =
+    useState("");
 
-  const [borderradiustopleftcssvalue, setborderradiustopleftcssvalue] =
-    useState('');
-  const [borderradiustopleftcssunits, setborderradiustopleftcssunits] =
-    useState('');
+  const [borderRadiusTopLeftCssValue, setBorderRadiusTopLeftCssValue] =
+    useState("");
+  const [borderRadiusTopLeftCssUnits, setBorderRadiusTopLeftCssUnits] =
+    useState("");
 
-  const [borderradiustoprightcssvalue, setborderradiustoprightcssvalue] =
-    useState('');
-  const [borderradiustoprightcssunits, setborderradiustoprightcssunits] =
-    useState('');
+  const [borderRadiusTopRightCssValue, setBorderRadiusTopRightCssValue] =
+    useState("");
+  const [borderRadiusTopRightCssUnits, setBorderRadiusTopRightCssUnits] =
+    useState("");
   return (
     <>
       <h1>Decorations</h1>
@@ -51,42 +51,42 @@ const Decorations = ({ setprop }) => {
           <FormControl>
             <label htmlFor="Top"> Top Left</label>
             <div style={{ display: "flex" }}>
-            <InputTag
-              id={"BorderRadiusTopLeft"}
-              value={borderradiustopleftcssvalue}
-              setcssvalue={setborderradiustopleftcssvalue}
-              setcssunits={setborderradiustopleftcssunits}
-              setprop={setprop}
-            />
-            <SelectTagUnits
-              id={"BorderRadiusTopLeft"}
-              units={setborderradiustopleftcssunits}
-              setcssvalue={setborderradiustopleftcssvalue}
-              setProp={setprop}
-              value={borderradiustopleftcssvalue}
-              defaultvalue={borderradiustopleftcssunits}
-            />
+              <InputTag
+                id={"borderRadiusTopLeft"}
+                value={borderRadiusTopLeftCssValue}
+                setCssValue={setBorderRadiusTopLeftCssValue}
+                setCssUnits={setBorderRadiusTopLeftCssUnits}
+                setprop={setprop}
+              />
+              <SelectTagUnits
+                id={"borderRadiusTopLeft"}
+                units={setBorderRadiusTopLeftCssUnits}
+                setCssValue={setBorderRadiusTopLeftCssValue}
+                setProp={setprop}
+                value={borderRadiusTopLeftCssValue}
+                defaultValue={borderRadiusTopLeftCssUnits}
+              />
             </div>
           </FormControl>
 
           <FormControl>
             <label htmlFor="Top">Top Right </label>
             <div style={{ display: "flex" }}>
-            <InputTag
-              id={"BorderRadiusTopRight"}
-              value={borderradiustoprightcssvalue}
-              setcssvalue={setborderradiustoprightcssvalue}
-              setcssunits={setborderradiustoprightcssunits}
-              setprop={setprop}
-            />
-            <SelectTagUnits
-              id={"BorderRadiusTopRight"}
-              units={setborderradiustoprightcssunits}
-              setcssvalue={setborderradiustoprightcssvalue}
-              setProp={setprop}
-              value={borderradiustoprightcssvalue}
-              defaultvalue={borderradiustoprightcssunits}
-            />
+              <InputTag
+                id={"borderRadiusTopRight"}
+                value={borderRadiusTopRightCssValue}
+                setCssValue={setBorderRadiusTopRightCssValue}
+                setCssUnits={setBorderRadiusTopRightCssUnits}
+                setprop={setprop}
+              />
+              <SelectTagUnits
+                id={"borderRadiusTopRight"}
+                units={setBorderRadiusTopRightCssUnits}
+                setCssValue={setBorderRadiusTopRightCssValue}
+                setProp={setprop}
+                value={borderRadiusTopRightCssValue}
+                defaultValue={borderRadiusTopRightCssUnits}
+              />
             </div>
           </FormControl>
         </div>
@@ -96,42 +96,42 @@ const Decorations = ({ setprop }) => {
           <FormControl>
             <label htmlFor="Top"> Bottom Left</label>
             <div style={{ display: "flex" }}>
-            <InputTag
-              id={"BorderRadiusBottomLeft"}
-              value={borderradiusbottomleftcssvalue}
-              setcssvalue={setborderradiusbottomleftcssvalue}
-              setcssunits={setborderradiusbottomleftcssunits}
-              setprop={setprop}
-            />
-            <SelectTagUnits
-              id={"BorderRadiusBottomLeft"}
-              units={setborderradiusbottomleftcssunits}
-              setcssvalue={setborderradiusbottomleftcssvalue}
-              setProp={setprop}
-              value={borderradiusbottomleftcssvalue}
-              defaultvalue={borderradiusbottomleftcssunits}
-            />
+              <InputTag
+                id={"borderRadiusBottomLeft"}
+                value={borderRadiusBottomLeftCssValue}
+                setCssValue={setBorderRadiusBottomLeftCssValue}
+                setCssUnits={setBorderRadiusBottomLeftCssUnits}
+                setprop={setprop}
+              />
+              <SelectTagUnits
+                id={"borderRadiusBottomLeft"}
+                units={setBorderRadiusBottomLeftCssUnits}
+                setCssValue={setBorderRadiusBottomLeftCssValue}
+                setProp={setprop}
+                value={borderRadiusBottomLeftCssValue}
+                defaultValue={borderRadiusBottomLeftCssUnits}
+              />
             </div>
           </FormControl>
 
           <FormControl>
             <label htmlFor="Top">Bottom Right </label>
             <div style={{ display: "flex" }}>
-            <InputTag
-              id={"BorderRadiusBottomRight"}
-              value={borderradiusbottomrightcssvalue}
-              setcssvalue={setborderradiusbottomrightcssvalue}
-              setcssunits={setborderradiusbottomrightcssunits}
-              setprop={setprop}
-            />
-            <SelectTagUnits
-              id={"BorderRadiusBottomRight"}
-              units={setborderradiusbottomrightcssunits}
-              setcssvalue={setborderradiusbottomrightcssvalue}
-              setProp={setprop}
-              value={borderradiusbottomrightcssvalue}
-              defaultvalue={borderradiusbottomrightcssunits}
-            />
+              <InputTag
+                id={"borderRadiusBottomRight"}
+                value={borderRadiusBottomRightCssValue}
+                setCssValue={setBorderRadiusBottomRightCssValue}
+                setCssUnits={setBorderRadiusBottomRightCssUnits}
+                setprop={setprop}
+              />
+              <SelectTagUnits
+                id={"borderRadiusBottomRight"}
+                units={setBorderRadiusBottomRightCssUnits}
+                setCssValue={setBorderRadiusBottomRightCssValue}
+                setProp={setprop}
+                value={borderRadiusBottomRightCssValue}
+                defaultValue={borderRadiusBottomRightCssUnits}
+              />
             </div>
           </FormControl>
         </div>
@@ -141,28 +141,28 @@ const Decorations = ({ setprop }) => {
           <FormControl>
             <label htmlFor="Style">Style</label>
             <div style={{ display: "flex" }}>
-              <SelectTag id={"BorderStyle"} setprop={setprop}/>
+              <SelectTag id={"borderStyle"} setprop={setprop} />
             </div>
           </FormControl>
           <FormControl>
             <label htmlFor="Top">Border width</label>
             <div style={{ display: "flex" }}>
-            <InputTag
-              id={"BorderWidth"}
-              value={borderwidthcssvalue}
-              setcssvalue={setborderwidthcssvalue}
-              setcssunits={setborderwidthcssunits}
-              setprop={setprop}
-            />
+              <InputTag
+                id={"borderWidth"}
+                value={borderWidthCssValue}
+                setCssValue={setBorderWidthCssValue}
+                setCssUnits={setBorderWidthCssUnits}
+                setprop={setprop}
+              />
 
-            <SelectTagUnits
-              id={"BorderWidth"}
-              units={setborderwidthcssunits}
-              setcssvalue={setborderwidthcssvalue}
-              setProp={setprop}
-              value={borderwidthcssvalue}
-              defaultvalue={borderwidthcssunits}
-            />
+              <SelectTagUnits
+                id={"borderWidth"}
+                units={setBorderWidthCssUnits}
+                setCssValue={setBorderWidthCssValue}
+                setProp={setprop}
+                value={borderWidthCssValue}
+                defaultValue={borderWidthCssUnits}
+              />
             </div>
           </FormControl>
         </div>

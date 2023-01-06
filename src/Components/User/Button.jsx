@@ -1,7 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useNode } from "@craftjs/core";
-
+import General from "../Settings/General";
+import Decorations from "../Settings/Decorations";
+import Dimension from "../Settings/Dimension";
+import Typography from "../Settings/Typography";
+import Flex from "../Settings/Flex";
 import {
   Button as MaterialButton,
   Grid,
@@ -13,69 +17,134 @@ import {
   Radio,
   FormControlLabel,
 } from "@mui/material";
+// import ButtonGeneral from "../Settings/ButtonGeneral";
 
-export const Button = ({ size, variant, color, children, text }) => {
+export const Button = ({
+  size,
+  background,
+  variant,
+  color,
+  children,
+  text,
+  fontSize,
+  textAlign,
+  fontFamily,
+  position,
+  width,
+  height,
+  maxWidth,
+  minHeight,
+  fontWeight,
+  borderTopLeftRadius,
+  borderTopRightRadius,
+  borderBottomRightRadius,
+  borderBottomLeftRadius,
+  opacity,
+  display,
+  top,
+  right,
+  left,
+  bottom,
+  float,
+  marginTop,
+  marginLeft,
+  marginRight,
+  marginBottom,
+  paddingTop,
+  paddingLeft,
+  paddingRight,
+  paddingBottom,
+  textDecoration,
+  textShadow,
+  letterSpacing,
+  lineHeight,
+  border,
+  flexDirection,
+  justifyContent,
+  alignItems,
+  alignSelf,
+  flexGrow,
+  flexShrink,
+  flexBasis,
+  borderStyle,
+  borderWidth,
+}) => {
   const {
     connectors: { connect, drag },
   } = useNode();
   return (
-    <MaterialButton
+    <button
+      className="btn btn-info mb-3"
+      style={{
+        display,
+        background,
+        fontSize,
+        textAlign,
+        color,
+        float,
+        fontFamily,
+        top,
+        position,
+        bottom,
+        left,
+        right,
+        height,
+        width,
+        maxWidth,
+        minHeight,
+        marginTop,
+        marginLeft,
+        marginRight,
+        marginBottom,
+        paddingTop,
+        paddingLeft,
+        paddingRight,
+        paddingBottom,
+        fontWeight,
+        letterSpacing,
+        lineHeight,
+        opacity,
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius,
+        border,
+        flexDirection,
+        justifyContent,
+        alignItems,
+        alignSelf,
+        flexGrow,
+        flexShrink,
+        flexBasis,
+        borderStyle,
+        borderWidth,
+      }}
       ref={(ref) => connect(drag(ref))}
       size={size}
       variant={variant}
       color={color}
     >
       {text}
-    </MaterialButton>
+    </button>
   );
 };
 
 const ButtonSettings = () => {
   const {
     actions: { setProp },
+    color,
     props,
   } = useNode((node) => ({
     props: node.data.props,
   }));
-  const [username, setUsername] = useState("");
-  // const [message, setMessage] = useState("");
-  const [number, setNumber] = useState("");
-  const [string, setString] = useState("");
-
-  function search(event) {
-    // debugger;
-    if (event.key === "Enter") {
-      const inputValueWhenUserEnter = event.target.value;
-      let str = "",
-        num = "";
-
-      inputValueWhenUserEnter.split("").filter((item) => {
-        // debugger;
-        if (isNaN(item)) {
-          str = str + item;
-          let units = ["px", "%", "vh", "em", "rem", "vw"];
-          if (units.includes(str)) setString(str);
-        } else {
-          num = num + item;
-          setNumber(num);
-        }
-        return item;
-      });
-    }
-  }
-  const handleChange = (event) => {
-    setString(event.target.value);
-  };
-  const handleChanges = (event) => {
-    setNumber(event.target.value);
-  };
 
   return (
     <div className="">
       <FormControl size="small" component="fieldset">
+        <General setprop={setProp} />
         <FormLabel component="legend">Size</FormLabel>
 
-        <Select
+        <button
           defaultValue={props.size}
           onChange={(e) => setProp((props) => (props.size = e.target.value))}
         >
@@ -100,7 +169,7 @@ const ButtonSettings = () => {
           >
             Large
           </MenuItem>
-        </Select>
+        </button>
       </FormControl>
       <FormControl size="small" component="fieldset">
         <FormLabel component="legend">Variant</FormLabel>
@@ -162,47 +231,12 @@ const ButtonSettings = () => {
           </MenuItem>
         </Select>
       </FormControl>
-      <FormControl component="fieldset">
-        <FormLabel>Text</FormLabel>
-
-        <input
-          type="text"
-          value={username}
-          placeholder="jdoe123"
-          onChange={(e) => {
-            setProp((props) => (props.text = e.target.value));
-            setUsername(e.target.value);
-          }}
-        />
+      <FormControl size="small" component="fieldset">
+        <Dimension setprop={setProp} color={color} />
+        <Typography setprop={setProp} />
+        <Decorations setprop={setProp} color={color} />
+        <Flex setprop={setProp} />
       </FormControl>
-      <br />
-      <br />
-      <input
-        id="demo11"
-        type="text"
-        value={number}
-        placeholder="some text"
-        className="search"
-        onKeyUp={search}
-        onChange={handleChanges}
-      />
-      <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo11"
-        value={string}
-        onChange={handleChange}
-        label="Age"
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value="px">px</MenuItem>
-        <MenuItem value="%">%</MenuItem>
-        <MenuItem value="vh">vh</MenuItem>
-        <MenuItem value="em">em</MenuItem>
-        <MenuItem value="rem">rem</MenuItem>
-        <MenuItem value="vw">vw</MenuItem>
-      </Select>
     </div>
   );
 };

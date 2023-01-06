@@ -1,55 +1,55 @@
 import React, { useCallback, memo } from "react";
-const InputTag = ({ id, setprop, setcssvalue, setcssunits, value }) => {
+const InputTag = ({ id, setprop, setCssValue, setCssUnits, value }) => {
   let search = (e) => {
     if (e.key === "Enter") {
       let str = e.target.value;
       let finalValue = "";
-      var cssvalue = str.replace(/\D/g, "");
-      var cssunits = str.replace(/[^a-z]/gi, "");
-      let x = str.split(cssvalue);
+      var cssValue = str.replace(/\D/g, "");
+      var cssUnits = str.replace(/[^a-z]/gi, "");
+      let x = str.split(cssValue);
       if (x[1] === "%") {
-        cssunits = x[1];
+        cssUnits = x[1];
       }
-      if (!cssunits) {
-        cssunits = `px`;
+      if (!cssUnits) {
+        cssUnits = `px`;
       }
-      if (isNaN(cssunits)) {
-        setcssvalue(cssvalue);
+      if (isNaN(cssUnits)) {
+        setCssValue(cssValue);
         let str = "";
-        str = str + cssunits;
+        str = str + cssUnits;
         let units = ["px", "%", "vh", "em", "rem", "vw"];
         if (units.includes(str)) {
-          setcssunits(str);
+          setCssUnits(str);
         }
       }
       switch (str) {
         case "auto":
           finalValue = "auto";
-          setcssunits("");
-          setcssvalue("auto");
+          setCssUnits("");
+          setCssValue("auto");
           break;
         case "inherit":
           finalValue = "inherit";
-          setcssunits("");
-          setcssvalue("inherit");
+          setCssUnits("");
+          setCssValue("inherit");
           break;
         case "initial":
           finalValue = "initial";
-          setcssvalue("initial");
-          setcssunits("");
+          setCssValue("initial");
+          setCssUnits("");
           break;
         case "revert":
           finalValue = "revert";
-          setcssvalue("revert");
-          setcssunits("");
+          setCssValue("revert");
+          setCssUnits("");
           break;
         case "unset":
           finalValue = "unset";
-          setcssvalue("unset");
-          setcssunits("");
+          setCssValue("unset");
+          setCssUnits("");
           break;
         default:
-          finalValue = `${cssvalue}${cssunits}`;
+          finalValue = `${cssValue}${cssUnits}`;
           console.log(finalValue);
       }
 
@@ -66,68 +66,68 @@ const InputTag = ({ id, setprop, setcssvalue, setcssunits, value }) => {
         case "Left":
           setprop((props) => (props.left = finalValue));
           break;
-        case "FontSize":
+        case "fontSize":
           setprop((props) => (props.fontSize = finalValue));
           break;
-        case "LetterSpacing":
+        case "letterSpacing":
           setprop((props) => (props.letterSpacing = finalValue));
           break;
-        case "LineHeight":
+        case "lineHeight":
           setprop((props) => (props.lineHeight = finalValue));
           break;
-        case "FlexBasis":
+        case "flexBasis":
           setprop((props) => (props.flexBasis = finalValue));
           break;
         case "Width":
           setprop((props) => (props.width = finalValue));
           break;
-        case "MaxWidth":
+        case "maxWidth":
           setprop((props) => (props.maxWidth = finalValue));
           break;
         case "Height":
           setprop((props) => (props.height = finalValue));
           break;
-        case "MinHeight":
+        case "minHeight":
           setprop((props) => (props.minHeight = finalValue));
           break;
-        case "MarginTop":
+        case "marginTop":
           setprop((props) => (props.marginTop = finalValue));
           break;
-        case "MarginBottom":
+        case "marginBottom":
           setprop((props) => (props.marginBottom = finalValue));
           break;
-        case "MarginLeft":
+        case "marginLeft":
           setprop((props) => (props.marginLeft = finalValue));
           break;
-        case "MarginRight":
+        case "marginRight":
           setprop((props) => (props.marginRight = finalValue));
           break;
-        case "PaddingTop":
+        case "paddingTop":
           setprop((props) => (props.paddingTop = finalValue));
           break;
-        case "PaddingBottom":
+        case "paddingBottom":
           setprop((props) => (props.paddingBottom = finalValue));
           break;
 
-        case "PaddingLeft":
+        case "paddingLeft":
           setprop((props) => (props.paddingLeft = finalValue));
           break;
-        case "PaddingRight":
+        case "paddingRight":
           setprop((props) => (props.paddingRight = finalValue));
           break;
-        case "BorderRadiusTopLeft":
+        case "borderRadiusTopLeft":
           setprop((props) => (props.borderTopLeftRadius = finalValue));
           break;
-        case "BorderRadiusTopRight":
+        case "borderRadiusTopRight":
           setprop((props) => (props.borderTopRightRadius = finalValue));
           break;
-        case "BorderRadiusBottomLeft":
+        case "borderRadiusBottomLeft":
           setprop((props) => (props.borderBottomLeftRadius = finalValue));
           break;
-        case "BorderRadiusBottomRight":
+        case "borderRadiusBottomRight":
           setprop((props) => (props.borderBottomRightRadius = finalValue));
           break;
-        case "BorderWidth":
+        case "borderWidth":
           setprop((props) => (props.borderWidth = finalValue));
           break;
         default:
@@ -140,7 +140,7 @@ const InputTag = ({ id, setprop, setcssvalue, setcssunits, value }) => {
       <input
         value={value}
         onChange={(e) => {
-          setcssvalue(e.target.value);
+          setCssValue(e.target.value);
         }}
         onKeyDown={useCallback((e) => {
           search(e);

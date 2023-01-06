@@ -1,11 +1,11 @@
-import React from 'react'
-import {data} from '../../data'
+import React from "react";
+import { data } from "../../data";
 
-const SelectTag = ({ setprop, id}) => {
-    let x = data.filter((x)=>x.id===id)
+const SelectTag = ({ setprop, id }) => {
+  let x = data.filter((x) => x.id === id);
   return (
     <>
-    <select
+      <select
         onChange={(event) => {
           let finalValue = event.target.value;
 
@@ -19,50 +19,51 @@ const SelectTag = ({ setprop, id}) => {
             case "Position":
               setprop((props) => (props.position = finalValue));
               break;
-            case "FontFamily":
+            case "fontFamily":
               setprop((props) => (props.fontFamily = finalValue));
               break;
-            case "TextAlign":
+            case "textAlign":
               setprop((props) => (props.textAlign = finalValue));
               break;
-            case "FontWeight":
-              setprop((props) => (props.fontWeight  = finalValue));
+            case "fontWeight":
+              setprop((props) => (props.fontWeight = finalValue));
               break;
-            case "FlexContainer":
+            case "flexContainer":
               setprop((props) => (props.display = finalValue));
               break;
-            case "FlexDirection":
+            case "flexDirection":
               setprop((props) => (props.flexDirection = finalValue));
               break;
-            case "JustifyContent":
+            case "justifyContent":
               setprop((props) => (props.justifyContent = finalValue));
               break;
-            case "AlignItems":
+            case "alignItems":
               setprop((props) => (props.alignItems = finalValue));
               break;
-            case "AlignSelf":
+            case "alignSelf":
               setprop((props) => (props.alignSelf = finalValue));
               break;
-            case "BorderStyle":
-              setprop((props) => (props.borderStyle= finalValue));
+            case "borderStyle":
+              setprop((props) => (props.borderStyle = finalValue));
               break;
-            
+
             default:
               console.log(finalValue);
           }
         }}
       >
-        {
-          x.map((item)=>{
-            return item.values.map((z,i)=>{
-              return<option key={i} value={z.units}>{z.name}</option>
-            })
-          })
-        }
+        {x.map((item) => {
+          return item.values.map((z, i) => {
+            return (
+              <option key={i} value={z.units}>
+                {z.name}
+              </option>
+            );
+          });
+        })}
       </select>
-      
     </>
-  )
-}
+  );
+};
 
-export default SelectTag
+export default SelectTag;

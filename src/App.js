@@ -59,22 +59,22 @@ export default function App() {
           <Grid item xs style={{ width: "250px" }}>
             <Frame>
               <Element is={Container} padding={5} background="#456" canvas>
-                <Container padding={5} height="10vh" background="#eee" text="">
-                  <Card />
+                <Card />
+                <Container padding={5} height="10vh" background="#eee">
+                  {/* <Container padding={5} height="55vh" background="#ee0"> */}
+                  {/* </Container> */}
                   <Button size="small" variant="outlined">
                     Click
                   </Button>
                   <Text size="small" text="Hi world!" />
                   {/* <Text /> */}
-                  <Container padding={6} background="#999" text="">
+                  <Container padding={6} background="#999">
                     <Element
                       is={Container}
                       padding={2}
                       background="#999"
                       canvas
-                    >
-                      {/* <Text size="small" text="It's me again!" /> */}
-                    </Element>
+                    ></Element>
                   </Container>
                 </Container>
               </Element>
