@@ -19,7 +19,7 @@ import Flex from "../Settings/Flex";
 
 export const Container = ({
   text,
-  background,
+  background = "gray",
   padding,
   children,
   minHeight,
@@ -134,9 +134,8 @@ export const Container = ({
               (props.text = e.target.value.replace(/<\/?[^>]+(>|$)/g, ""))
           )
         }
-        tagName="p"
+        tagName="div"
       />
-      {/* {children} */}
     </Paper>
   );
 };

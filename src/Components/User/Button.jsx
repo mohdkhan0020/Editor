@@ -144,7 +144,7 @@ const ButtonSettings = () => {
         <General setprop={setProp} />
         <FormLabel component="legend">Size</FormLabel>
 
-        <button
+        <Select
           defaultValue={props.size}
           onChange={(e) => setProp((props) => (props.size = e.target.value))}
         >
@@ -169,7 +169,7 @@ const ButtonSettings = () => {
           >
             Large
           </MenuItem>
-        </button>
+        </Select>
       </FormControl>
       <FormControl size="small" component="fieldset">
         <FormLabel component="legend">Variant</FormLabel>

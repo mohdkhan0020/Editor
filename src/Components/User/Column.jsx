@@ -259,15 +259,6 @@ const ColumnSettings = () => {
         <Flex setprop={setProp} />
         <Decorations setprop={setProp} color={color} />
         <Dimension setprop={setProp} color={color} />
-        <MaterialButton
-          variant="contained"
-          // color="default"
-          onClick={() => {
-            // actions.delete(selected.id);
-          }}
-        >
-          Delete
-        </MaterialButton>
       </FormControl>
     </>
   );

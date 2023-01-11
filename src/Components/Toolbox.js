@@ -11,7 +11,7 @@ import { DoubleColumn, DoubleColumnChild } from "./User/DoubleColumn";
 import { ThreeColumn } from "./User/ThreeColumn";
 import { FourColumn } from "./User/FourColumn";
 import { Image } from "./User/Image";
-import Table from "./User/Table";
+import { Table } from "./User/Table";
 
 export const Toolbox = () => {
   const { connectors, query } = useEditor();

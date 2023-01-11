@@ -22,7 +22,7 @@ import { Column, ColumnChild } from "./Components/User/Column";
 
 import { Editor, Frame, Element } from "@craftjs/core";
 import { Class } from "@mui/icons-material";
-import Table from "./Components/User/Table";
+import { Table } from "./Components/User/Table";
 
 // import { ThreeColumnChild } from "./Components/User/ThreeColumn";
 
@@ -50,7 +50,7 @@ export default function App() {
           FourColumn,
           FourColumnChild,
           Image,
-          ImageChild,
+          // ImageChild,
           Table,
         }}
       >
