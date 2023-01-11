@@ -54,7 +54,8 @@ export const DoubleColumnChild = ({
   return (
     <>
       <div style={{ display: "flex" }}>
-        <div
+      
+        {/* <div
           ref={connect}
           className="text-only"
           style={{
@@ -84,9 +85,8 @@ export const DoubleColumnChild = ({
         >
           {children}
           <Element height="77px" id="double2" is={Container} canvas>
-            {/* <h1>yah buddy</h1> */}
           </Element>
-        </div>
+        </div> */}
       </div>
     </>
   );
@@ -96,12 +96,16 @@ export const DoubleColumn = ({ background, padding }) => {
   return (
     <Container
       background={background}
-      padding={padding}
-      height={`95px`}
+      padding={"7px"}
+      height={`140px`}
       className="kkkkk"
       text=""
+      display={"flex"}
+      width="770px"
+      justifyContent={"space-evenly"}
     >
-      <Element id="doubleColumn" is={DoubleColumnChild} canvas></Element>
+      <Element id="doubleColumn" style={{marginLeft:"55px"}} is={Column} ></Element>
+      <Element id="doubleColumn1" is={Column} ></Element>
     </Container>
   );
 };

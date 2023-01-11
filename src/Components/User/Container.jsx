@@ -32,7 +32,7 @@ export const Container = ({
   fontFamily,
   position,
   width,
-  height = "200px",
+  height = "400px",
   maxWidth,
   maxHeight,
   fontWeight,

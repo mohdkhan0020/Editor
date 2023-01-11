@@ -1,5 +1,5 @@
 // pages/index.js
-import React from "react";
+import React,{useState} from "react";
 import { Paper, Grid, Typography } from "@mui/material";
 
 import { Toolbox } from "./Components/Toolbox";
@@ -23,13 +23,31 @@ import { Column, ColumnChild } from "./Components/User/Column";
 import { Editor, Frame, Element } from "@craftjs/core";
 import { Class } from "@mui/icons-material";
 import Table from "./Components/User/Table";
+import {BsFillImageFill} from "react-icons/bs";
+
+
 
 // import { ThreeColumnChild } from "./Components/User/ThreeColumn";
 
-export default function App() {
+ function App() {
+  const [showelements, setshowelements] = useState(true)
+  const [showsettings, setshowsettings] = useState(true)
   return (
     <div style={{ margin: "0 auto", width: "800px" }}>
-      <Typography variant="h5" align="center">
+      
+      <div>
+
+        <button onClick={()=>{
+          setshowelements(!showelements)
+          console.log(showelements)
+          
+        }}>Elements</button>
+        <button onClick={()=>{
+          setshowsettings(!showsettings)
+          console.log(showsettings);
+        }}>settings</button>
+      </div>
+        <Typography variant="h5" align="center">
         The Page Editor
       </Typography>
       <Editor
@@ -42,7 +60,6 @@ export default function App() {
           Container,
           Paper,
           Column,
-          ColumnChild,
           DoubleColumn,
           DoubleColumnChild,
           ThreeColumn,
@@ -54,7 +71,7 @@ export default function App() {
           Table,
         }}
       >
-        <Grid container spacing={3} style={{ paddingTop: "10px" }}>
+        <Grid container spacing={5} style={{ paddingTop: "10px" }}>
           {/* <Topbar /> */}
           <Grid item xs style={{ width: "250px" }}>
             <Frame>
@@ -82,8 +99,10 @@ export default function App() {
           </Grid>
           <Grid item lg={1}>
             <Paper style={{ width: "250px" }} className={Class.root}>
-              <Toolbox />
-              <SettingsPanel />
+              <div style={{display:"flex",marginRight:"55px"}}>
+              {showelements?<Toolbox />:null}
+              {showsettings?<SettingsPanel />:null}
+              </div>
             </Paper>
           </Grid>
         </Grid>
@@ -91,3 +110,4 @@ export default function App() {
     </div>
   );
 }
+export default App;
