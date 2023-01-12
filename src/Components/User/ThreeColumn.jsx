@@ -67,7 +67,7 @@ export const ThreeColumnChild = ({
           <Element
             height="77px"
             id="threeColumn1"
-            is={Container}
+            is={Column}
             canvas
           ></Element>
         </div>
@@ -86,7 +86,7 @@ export const ThreeColumnChild = ({
           <Element
             height="77px"
             id="threeColumn2"
-            is={Container}
+            is={Column}
             canvas
           ></Element>
         </div>
@@ -105,7 +105,7 @@ export const ThreeColumnChild = ({
           <Element
             height="77px"
             id="threeColumn3"
-            is={Container}
+            is={Column}
             canvas
           ></Element>
         </div>
@@ -119,11 +119,15 @@ export const ThreeColumn = ({ background, padding }) => {
     <Container
       background={background}
       padding={padding}
-      height={`75px`}
+      height={`125px`}
+      width={`700px`}
       className="kkkkk"
       text=""
+      display={"flex"}
     >
-      <Element id="threeColumn" is={ThreeColumnChild} canvas></Element>
+      <Element id="threeColumn" is={Column} ></Element>
+      <Element id="threeColumn1" is={Column} ></Element>
+      <Element id="threeColumn2" is={Column} ></Element>
     </Container>
   );
 };

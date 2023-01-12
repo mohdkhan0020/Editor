@@ -87,6 +87,7 @@ export const Card = ({
   textDecoration,
   textShadow,
 }) => {
+  const [element, setelement] = React.useState(1)
   return (
     <Paper background={background} padding={padding} text="">
       <Element id="text" is={CardTop} canvas>

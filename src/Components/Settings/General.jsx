@@ -6,7 +6,7 @@ import SelectTagUnits from "../Input/SelectTagUnits";
 import SelectTag from "../Input/SelectTag";
 import InputTag from "../Input/InputTag";
 
-const General = ({ setprop, background, color }) => {
+const General = ({ setprop, color }) => {
   const [topCssValue, setTopCssValue] = useState("");
   const [topCssUnits, setTopCssUnits] = useState("");
 

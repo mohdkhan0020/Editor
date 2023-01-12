@@ -75,8 +75,8 @@ export const Image = ({
 
   const [editable, setEditable] = useState(false);
   const [imageResize, setimageResize] = useState();
-
   const [selectedFile, setSelectedFile] = useState();
+  const [toggle, setToggle] = useState(true);
   const [preview, setPreview] = useState({
     width: 200,
     height: 200,
@@ -84,24 +84,30 @@ export const Image = ({
     y: 10,
   });
 
-  const [toggle, setToggle] = useState(true);
   useEffect(() => {
     !hasSelectedNode && setEditable(false);
-  }, [hasSelectedNode]);
-
-  useEffect(() => {
-    // debugger;
     if (!selectedFile) {
       setimageResize(undefined);
       return;
     }
-    setToggle(!toggle);
+    if (toggle) {
+      setToggle(!toggle);
+    }
     // debugger;
+
     const objectUrl = URL.createObjectURL(selectedFile);
     setimageResize(objectUrl);
+    <em></em>;
     // free memory when ever this component is unmounted
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+    return () => {
+      URL.revokeObjectURL(objectUrl);
+    };
+  }, [hasSelectedNode, selectedFile, toggle]);
+
+  // useEffect(() => {
+  //   // debugger;
+
+  // }, []);
 
   const onSelectFile = (e) => {
     // debugger;
@@ -140,7 +146,7 @@ export const Image = ({
     setSelectedFile(e.target.files[0]);
   };
 
-  const style = {
+  const style1 = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -184,6 +190,45 @@ export const Image = ({
     borderWidth,
   };
 
+  // const style = {
+  //   fontSize,
+  //   textAlign,
+  //   float,
+  //   fontFamily,
+  //   top,
+  //   position,
+  //   bottom,
+  //   left,
+  //   right,
+  //   height,
+  //   width,
+  //   maxWidth,
+  //   minHeight,
+  //   marginTop,
+  //   marginLeft,
+  //   marginRight,
+  //   marginBottom,
+  //   paddingTop,
+  //   paddingLeft,
+  //   paddingRight,
+  //   paddingBottom,
+  //   fontWeight,
+  //   letterSpacing,
+  //   lineHeight,
+  //   opacity,
+  //   borderTopLeftRadius,
+  //   borderTopRightRadius,
+  //   borderBottomRightRadius,
+  //   borderBottomLeftRadius,
+  //   flexDirection,
+  //   alignSelf,
+  //   flexGrow,
+  //   flexShrink,
+  //   flexBasis,
+  //   borderStyle,
+  //   borderWidth,
+  // };
+
   return (
     <div>
       {toggle && (
@@ -196,7 +241,7 @@ export const Image = ({
       )}
 
       <Rnd
-        style={style}
+        style={style1}
         onDragStop={(e, d) => {
           setPreview({ x: d.x, y: d.y });
         }}
@@ -209,6 +254,7 @@ export const Image = ({
         }}
       >
         <img
+          // style={style}
           ref={(ref) => connect(drag(ref))}
           size={{ width: preview.width, height: preview.height }}
           position={{ x: preview.x, y: preview.y }}
