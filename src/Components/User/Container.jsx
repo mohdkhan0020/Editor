@@ -12,7 +12,7 @@ import Flex from "../Settings/Flex";
 
 export const Container = ({
   text,
-  background = "gray",
+  background = "transparent",
   padding,
   children,
   minHeight,
@@ -113,6 +113,7 @@ export const Container = ({
         flexGrow,
         flexShrink,
         flexBasis,
+        background
       }}
     >
       {children}

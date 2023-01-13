@@ -18,6 +18,7 @@ import Decorations from "../Settings/Decorations";
 import Dimension from "../Settings/Dimension";
 import Typography from "../Settings/Typography";
 import Flex from "../Settings/Flex";
+import {Image} from "./Image";
 
 import { Container } from "./Container";
 
@@ -84,7 +85,7 @@ export const Column = ({
     }
     if(element==="Image"){
       return <Element id='90' style={{height:"100px"}} is={Container}>
-      <h1>Imagenotfound</h1></Element>
+      <Image/></Element>
     }
     
   }

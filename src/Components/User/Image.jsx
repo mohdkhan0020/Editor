@@ -157,7 +157,7 @@ export const Image = ({
     float,
     fontFamily,
     top,
-    position,
+    position:"relative",
     bottom,
     left,
     right,

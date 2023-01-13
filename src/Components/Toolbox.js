@@ -12,6 +12,9 @@ import { ThreeColumn } from "./User/ThreeColumn";
 import { FourColumn } from "./User/FourColumn";
 import { Image } from "./User/Image";
 import { Table } from "./User/Table";
+import { VerticalColumn } from "./User/VerticalColumn";
+import { VerticalDoubleColumn } from "./User/DoubleColumnVertical";
+import { VerticalThreeColumn } from "./User/ThreeColumnVertical";
 
 export const Toolbox = () => {
   const { connectors, query } = useEditor();
@@ -130,6 +133,30 @@ export const Toolbox = () => {
             variant="contained"
           >
             Table
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <VerticalColumn />)}
+            variant="contained"
+          >
+            Vertical Column
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <VerticalDoubleColumn />)}
+            variant="contained"
+          >
+            Double Column Vertical
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <VerticalThreeColumn />)}
+            variant="contained"
+          >
+            Three Column Vertical
           </MaterialButton>
         </Grid>
       </Grid>

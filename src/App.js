@@ -12,6 +12,9 @@ import { Button } from "./Components/User/Button";
 import { Card } from "./Components/User/Card";
 import { ThreeColumn, ThreeColumnChild } from "./Components/User/ThreeColumn";
 import { Text } from "./Components/User/Text";
+import { VerticalDoubleColumn } from "./Components/User/DoubleColumnVertical";
+import { VerticalThreeColumn } from "./Components/User/ThreeColumnVertical";
+import { VerticalColumn } from "./Components/User/VerticalColumn";
 import { Image, ImageChild } from "./Components/User/Image";
 import { FourColumn, FourColumnChild } from "./Components/User/FourColumn";
 import {
@@ -64,12 +67,14 @@ function App() {
           Column,
           DoubleColumn,
           DoubleColumnChild,
+          VerticalThreeColumn,
           ThreeColumn,
           ThreeColumnChild,
           FourColumn,
           FourColumnChild,
           Image,
-          // ImageChild,
+          VerticalDoubleColumn,
+          VerticalColumn,
           Table,
         }}
       >
@@ -78,15 +83,15 @@ function App() {
           <Grid item xs style={{ width: "250px" }}>
             <Frame>
               <Element is={Container} padding={5} background="#456" canvas>
-                <Card />
-                <Container padding={5} height="10vh" background="#eee">
+                
                   {/* <Container padding={5} height="55vh" background="#ee0"> */}
                   {/* </Container> */}
+                  {/* <Text /> */}
+                {/* <Container padding={5} height="10vh" background="#eee">
                   <Button size="small" variant="outlined">
                     Click
                   </Button>
                   <Text size="small" text="Hi world!" />
-                  {/* <Text /> */}
                   <Container padding={6} background="#999">
                     <Element
                       is={Container}
@@ -95,7 +100,7 @@ function App() {
                       canvas
                     ></Element>
                   </Container>
-                </Container>
+                </Container> */}
               </Element>
             </Frame>
           </Grid>
